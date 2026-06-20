@@ -5,11 +5,9 @@ extends Node2D
 const BALL_SCENE := preload("uid://dpieyslanfybp")
 
 var ball: Ball = null
-var left_score: int = 0
-var right_score: int = 0
+var level: int = 0
 
-@onready var left_score_label: Label = %LeftScoreLabel
-@onready var right_score_label: Label = %RightScoreLabel
+@onready var level_label: Label = %LevelLabel
 @onready var ball_spawn_position: Marker2D = %BallSpawnPosition
 @onready var left_paddle: Paddle = %LeftPaddle
 @onready var right_paddle: Paddle = %RightPaddle
@@ -30,6 +28,7 @@ func _process(_delta: float) -> void:
 func spawn_ball() -> void:
 	ball = BALL_SCENE.instantiate()
 	ball.global_position = ball_spawn_position.global_position
+	ball.paddle_hit.connect(_on_ball_paddle_hit)
 	add_child(ball)
 	
 	# Randomly choose NE, NW, SW, or SE direction
@@ -46,21 +45,29 @@ func spawn_ball() -> void:
 func restart() -> void:
 	if ball:
 		ball.queue_free()
+	score_sfx.play()
 	spawn_ball()
+	level = 0
+	level_label.text = str(level)
 
 
-# Restart the game on either goal being entered
-# Update the oppsite sides score
-# The goals have a collision mask for just the ball
-func _on_left_goal_body_entered(_body: Node2D) -> void:
-	right_score += 1
-	right_score_label.text = str(right_score)
-	score_sfx.play()
-	restart.call_deferred()
+func _next_level() -> void:
+	level += 1
+	level_label.text = str(level)
 
 
-func _on_right_goal_body_entered(_body: Node2D) -> void:
-	left_score += 1
-	left_score_label.text = str(left_score)
-	score_sfx.play()
-	restart.call_deferred()
+func _on_ball_paddle_hit(_paddle: Paddle) -> void:
+	_next_level()
+
+
+func _ball_out_of_bounds() -> void:
+	restart()
+	
+
+# Restart the game on either bounds being entered
+func _on_left_bounds_body_entered(_body: Node2D) -> void:
+	_ball_out_of_bounds.call_deferred()
+
+
+func _on_right_bounds_body_entered(_body: Node2D) -> void:
+	_ball_out_of_bounds.call_deferred()

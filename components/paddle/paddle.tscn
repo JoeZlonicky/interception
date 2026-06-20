@@ -3,13 +3,31 @@
 [ext_resource type="Script" uid="uid://64eirvsc1toh" path="res://components/paddle/paddle.gd" id="1_waih8"]
 [ext_resource type="Texture2D" uid="uid://dexrf7pwg5sx8" path="res://components/paddle/paddle.png" id="2_1hevo"]
 
+[sub_resource type="Curve" id="Curve_1hevo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iqdgg"]
+curve = SubResource("Curve_1hevo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kwoxf"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 25.0
+scale_max = 25.0
+scale_curve = SubResource("CurveTexture_iqdgg")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hevo"]
 size = Vector2(50, 200)
 
 [node name="Paddle" type="CharacterBody2D" unique_id=1901416476]
 collision_layer = 2
-collision_mask = 5
 script = ExtResource("1_waih8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1075044370]
+amount = 32
+lifetime = 0.76
+process_material = SubResource("ParticleProcessMaterial_kwoxf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=520121163]
 texture = ExtResource("2_1hevo")

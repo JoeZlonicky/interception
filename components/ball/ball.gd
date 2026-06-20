@@ -2,9 +2,16 @@ class_name Ball
 extends CharacterBody2D
 
 
+signal paddle_hit(paddle: Paddle)
+
 const MOVE_SPEED: float = 550.0
 
 @onready var hit_sfx: AudioStreamPlayer2D = %HitSFX
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+
+func _process(delta: float) -> void:
+	sprite_2d.rotation += delta
 
 
 # Move using velocity and check for collisions
@@ -26,7 +33,7 @@ func _physics_process(delta: float) -> void:
 # Normally the game also modifies the ball's trajectory based on where it hits a paddle
 func _collide_with(body: Object, normal: Vector2) -> void:
 	if body is Paddle:
-		# Maybe you would want to do more here?
+		paddle_hit.emit(body)
 		pass
 	velocity = velocity.bounce(normal)
 	hit_sfx.play()

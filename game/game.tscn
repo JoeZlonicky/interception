@@ -29,38 +29,63 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
-[node name="Divider" type="ColorRect" parent="BackgroundLayer" unique_id=1991676147]
+[node name="ColorRect" type="ColorRect" parent="BackgroundLayer" unique_id=1947430383]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.0
-offset_top = -540.0
-offset_right = 3.0
-offset_bottom = 540.0
+offset_left = -860.0
+offset_top = -440.0
+offset_right = 860.0
+offset_bottom = 440.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0.2627451)
+color = Color(0.04755766, 0.047557645, 0.047557645, 1)
 
-[node name="LeftScoreLabel" type="Label" parent="BackgroundLayer" unique_id=1557134609]
-unique_name_in_owner = true
-offset_right = 960.0
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 64
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="ColorRect2" type="ColorRect" parent="BackgroundLayer" unique_id=50803828]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -760.0
+offset_top = -340.0
+offset_right = 760.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.021434652, 0.02143463, 0.021434627, 1)
 
-[node name="RightScoreLabel" type="Label" parent="BackgroundLayer" unique_id=183216827]
+[node name="ColorRect3" type="ColorRect" parent="BackgroundLayer" unique_id=1146157959]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -660.0
+offset_top = -240.0
+offset_right = 660.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011087579, 0.011087579, 0.011087577, 1)
+
+[node name="LevelLabel" type="Label" parent="BackgroundLayer" unique_id=1557134609]
 unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -960.0
-offset_bottom = 23.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 64
+self_modulate = Color(1, 1, 1, 0.54901963)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -44.0
+offset_right = 480.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -89,19 +114,19 @@ position = Vector2(960, 1080)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary" unique_id=839646617]
 shape = SubResource("WorldBoundaryShape2D_h7iqs")
 
-[node name="LeftGoal" type="Area2D" parent="." unique_id=627459463]
+[node name="LeftBounds" type="Area2D" parent="." unique_id=627459463]
 position = Vector2(-25, 0)
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftGoal" unique_id=1201717533]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBounds" unique_id=1201717533]
 position = Vector2(0, 540)
 shape = SubResource("RectangleShape2D_vasa2")
 
-[node name="RightGoal" type="Area2D" parent="." unique_id=1173702745]
+[node name="RightBounds" type="Area2D" parent="." unique_id=1173702745]
 position = Vector2(1945, 0)
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGoal" unique_id=1739800867]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBounds" unique_id=1739800867]
 position = Vector2(0, 540)
 shape = SubResource("RectangleShape2D_h7iqs")
 
@@ -109,5 +134,5 @@ shape = SubResource("RectangleShape2D_h7iqs")
 unique_name_in_owner = true
 stream = ExtResource("3_h7iqs")
 
-[connection signal="body_entered" from="LeftGoal" to="." method="_on_left_goal_body_entered"]
-[connection signal="body_entered" from="RightGoal" to="." method="_on_right_goal_body_entered"]
+[connection signal="body_entered" from="LeftBounds" to="." method="_on_left_bounds_body_entered"]
+[connection signal="body_entered" from="RightBounds" to="." method="_on_right_bounds_body_entered"]
