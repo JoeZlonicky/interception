@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dmov0n6cflnxj"]
+
+[ext_resource type="Script" uid="uid://b8qgljfi4ut1u" path="res://game/game.gd" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://dfq6d3x5qit4i" path="res://components/paddle/paddle.tscn" id="2_vasa2"]
+
+[node name="Game" type="Node2D" unique_id=156740021]
+script = ExtResource("1_l1rk1")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=520052765]
+layer = -1
+
+[node name="BackgroundColor" type="ColorRect" parent="BackgroundLayer" unique_id=143201205]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[node name="LeftPaddle" parent="." unique_id=1901416476 instance=ExtResource("2_vasa2")]
+unique_name_in_owner = true
+position = Vector2(25, 540)
+
+[node name="RightPaddle" parent="." unique_id=121752202 instance=ExtResource("2_vasa2")]
+unique_name_in_owner = true
+position = Vector2(1895, 540)

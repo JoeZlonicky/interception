@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://dmov0n6cflnxj"]
+
+[ext_resource type="Script" uid="uid://b8qgljfi4ut1u" path="res://game/game.gd" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://dfq6d3x5qit4i" path="res://components/paddle/paddle.tscn" id="2_vasa2"]
+[ext_resource type="AudioStream" uid="uid://o44jal8svjmx" path="res://common/sfx/score.wav" id="3_h7iqs"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vasa2"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h7iqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vasa2"]
+size = Vector2(50, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7iqs"]
+size = Vector2(50, 1080)
+
+[node name="Game" type="Node2D" unique_id=156740021]
+script = ExtResource("1_l1rk1")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=520052765]
+layer = -1
+
+[node name="BackgroundColor" type="ColorRect" parent="BackgroundLayer" unique_id=143201205]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[node name="Divider" type="ColorRect" parent="BackgroundLayer" unique_id=1991676147]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -540.0
+offset_right = 3.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.2627451)
+
+[node name="LeftScoreLabel" type="Label" parent="BackgroundLayer" unique_id=1557134609]
+unique_name_in_owner = true
+offset_right = 960.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightScoreLabel" type="Label" parent="BackgroundLayer" unique_id=183216827]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -960.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BallSpawnPosition" type="Marker2D" parent="." unique_id=805714642]
+unique_name_in_owner = true
+position = Vector2(960, 540)
+
+[node name="LeftPaddle" parent="." unique_id=1901416476 instance=ExtResource("2_vasa2")]
+unique_name_in_owner = true
+position = Vector2(25, 540)
+
+[node name="RightPaddle" parent="." unique_id=121752202 instance=ExtResource("2_vasa2")]
+unique_name_in_owner = true
+position = Vector2(1895, 540)
+
+[node name="TopBoundary" type="StaticBody2D" parent="." unique_id=1040491169]
+position = Vector2(960, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBoundary" unique_id=1663045548]
+shape = SubResource("WorldBoundaryShape2D_vasa2")
+
+[node name="BottomBoundary" type="StaticBody2D" parent="." unique_id=1895064204]
+position = Vector2(960, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary" unique_id=839646617]
+shape = SubResource("WorldBoundaryShape2D_h7iqs")
+
+[node name="LeftGoal" type="Area2D" parent="." unique_id=627459463]
+position = Vector2(-25, 0)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftGoal" unique_id=1201717533]
+position = Vector2(0, 540)
+shape = SubResource("RectangleShape2D_vasa2")
+
+[node name="RightGoal" type="Area2D" parent="." unique_id=1173702745]
+position = Vector2(1945, 0)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGoal" unique_id=1739800867]
+position = Vector2(0, 540)
+shape = SubResource("RectangleShape2D_h7iqs")
+
+[node name="ScoreSFX" type="AudioStreamPlayer" parent="." unique_id=1533403744]
+unique_name_in_owner = true
+stream = ExtResource("3_h7iqs")
+
+[connection signal="body_entered" from="LeftGoal" to="." method="_on_left_goal_body_entered"]
+[connection signal="body_entered" from="RightGoal" to="." method="_on_right_goal_body_entered"]
