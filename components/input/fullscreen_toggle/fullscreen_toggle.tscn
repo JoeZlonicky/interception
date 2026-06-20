@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ch16dxpr3ebtr"]
+
+[ext_resource type="Script" uid="uid://du4m0gvg2n7fk" path="res://components/input/fullscreen_toggle/fullscreen_toggle.gd" id="1_xbkj4"]
+
+[node name="FullscreenToggle" type="Node" unique_id=759269263]
+process_mode = 3
+script = ExtResource("1_xbkj4")

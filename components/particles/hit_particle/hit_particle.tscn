@@ -27,7 +27,7 @@ scale_curve = SubResource("CurveTexture_ms7ic")
 alpha_curve = SubResource("CurveTexture_kxaod")
 
 [node name="HitParticle" type="GPUParticles2D" unique_id=352992112]
-modulate = Color(1, 1, 1, 0.61960787)
+modulate = Color(0.8235294, 0.6627451, 1, 1)
 emitting = false
 amount = 4
 lifetime = 0.5

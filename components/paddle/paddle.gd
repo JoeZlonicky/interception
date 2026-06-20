@@ -6,6 +6,7 @@ const MOVE_SPEED: float = 400
 var input: float = 0.0
 var target: Node2D = null
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # If a target is set (i.e. AI paddle), follow it
 # Otherwise rely on manual input
@@ -16,6 +17,10 @@ func _physics_process(delta: float) -> void:
 		_follow_input()
 	
 	move_and_collide(velocity * delta)
+
+
+func flash() -> void:
+	animation_player.play("flash")
 
 
 # Update velocity based on input

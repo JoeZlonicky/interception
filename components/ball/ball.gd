@@ -5,14 +5,15 @@ extends CharacterBody2D
 signal paddle_hit(paddle: Paddle)
 
 const HIT_PARTICLE_SCENE := preload("uid://be262xlxf8xgx")
-const MOVE_SPEED: float = 550.0
+const MOVE_SPEED: float = 450.0
 
 @onready var hit_sfx: AudioStreamPlayer2D = %HitSFX
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _process(delta: float) -> void:
-	sprite_2d.rotation += delta
+	sprite_2d.rotation += delta * 2.0
 
 
 # Move using velocity and check for collisions
@@ -33,6 +34,7 @@ func _physics_process(delta: float) -> void:
 # Bounce on hitting something
 func _collide_with(body: Object, normal: Vector2, pos: Vector2) -> void:
 	if body is Paddle:
+		body.flash()
 		paddle_hit.emit(body)
 	
 	var hit_particle := HIT_PARTICLE_SCENE.instantiate() as GPUParticles2D
@@ -42,6 +44,7 @@ func _collide_with(body: Object, normal: Vector2, pos: Vector2) -> void:
 	hit_particle.finished.connect(hit_particle.queue_free)
 	
 	velocity = velocity.bounce(normal)
+	animation_player.play("flash")
 	hit_sfx.play()
 
 
