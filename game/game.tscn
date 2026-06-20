@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dmov0n6cflnxj"]
 
 [ext_resource type="Script" uid="uid://b8qgljfi4ut1u" path="res://game/game.gd" id="1_l1rk1"]
+[ext_resource type="FontFile" uid="uid://by2m4v1dk3eah" path="res://common/fonts/monomaniac_one/MonomaniacOne-Regular.ttf" id="2_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://dfq6d3x5qit4i" path="res://components/paddle/paddle.tscn" id="2_vasa2"]
 [ext_resource type="AudioStream" uid="uid://o44jal8svjmx" path="res://common/sfx/score.wav" id="3_h7iqs"]
 
@@ -27,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+color = Color(0.12941177, 0.08627451, 0.1882353, 1)
 
 [node name="ColorRect" type="ColorRect" parent="BackgroundLayer" unique_id=1947430383]
 anchors_preset = 8
@@ -35,29 +36,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -860.0
-offset_top = -440.0
-offset_right = 860.0
-offset_bottom = 440.0
+offset_left = -810.0
+offset_top = -390.0
+offset_right = 810.0
+offset_bottom = 390.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04755766, 0.047557645, 0.047557645, 1)
+color = Color(0.09803922, 0.0627451, 0.13725491, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="BackgroundLayer" unique_id=50803828]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -760.0
-offset_top = -340.0
-offset_right = 760.0
-offset_bottom = 340.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.021434652, 0.02143463, 0.021434627, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="BackgroundLayer" unique_id=1146157959]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -69,7 +56,21 @@ offset_right = 660.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.011087579, 0.011087579, 0.011087577, 1)
+color = Color(0.07450981, 0.047058824, 0.101960786, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="BackgroundLayer" unique_id=1146157959]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -510.0
+offset_top = -90.0
+offset_right = 510.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.039215688, 0.023529412, 0.050980393, 1)
 
 [node name="LevelLabel" type="Label" parent="BackgroundLayer" unique_id=1557134609]
 unique_name_in_owner = true
@@ -85,6 +86,7 @@ offset_right = 480.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_4fuuu")
 theme_override_font_sizes/font_size = 100
 text = "0"
 horizontal_alignment = 1

@@ -25,12 +25,15 @@ collision_layer = 2
 script = ExtResource("1_waih8")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1075044370]
+modulate = Color(0.73333335, 0.49019608, 1, 1)
 amount = 32
 lifetime = 0.76
 process_material = SubResource("ParticleProcessMaterial_kwoxf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=520121163]
+modulate = Color(0.73333335, 0.49019608, 1, 1)
 texture = ExtResource("2_1hevo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1014643547]
+visible = false
 shape = SubResource("RectangleShape2D_1hevo")

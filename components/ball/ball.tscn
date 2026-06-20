@@ -27,9 +27,11 @@ collision_mask = 3
 script = ExtResource("1_usys6")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=416094696]
+modulate = Color(0.73333335, 0.49019608, 1, 1)
 process_material = SubResource("ParticleProcessMaterial_wd5ij")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1534334981]
+modulate = Color(0.73333335, 0.49019608, 1, 1)
 texture = ExtResource("1_nmldg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1856682158]

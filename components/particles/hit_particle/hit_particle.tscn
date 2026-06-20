@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://be262xlxf8xgx"]
+
+[sub_resource type="Curve" id="Curve_01xan"]
+_data = [Vector2(0, 1), 0.0, -0.5592434, 0, 0, Vector2(1, 0), -0.25361106, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kxaod"]
+curve = SubResource("Curve_01xan")
+
+[sub_resource type="Curve" id="Curve_ms7ic"]
+_data = [Vector2(0, 0.51578957), 0.0, 1.448355, 0, 0, Vector2(1, 0.010526419), -4.3373165, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ms7ic"]
+curve = SubResource("Curve_ms7ic")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ms7ic"]
+particle_flag_disable_z = true
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+damping_min = 300.0
+damping_max = 300.0
+scale_min = 7.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_ms7ic")
+alpha_curve = SubResource("CurveTexture_kxaod")
+
+[node name="HitParticle" type="GPUParticles2D" unique_id=352992112]
+modulate = Color(1, 1, 1, 0.61960787)
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ms7ic")
