@@ -7,6 +7,7 @@ const BALL_SCENE := preload("uid://dpieyslanfybp")
 var ball: Ball = null
 var level: int = 0
 var drop_progress: float = 0.0
+var drop_tween: Tween
 
 @onready var announcement_label: Label = %AnnouncementLabel
 @onready var ball_spawn_position: Marker2D = %BallSpawnPosition
@@ -14,6 +15,7 @@ var drop_progress: float = 0.0
 @onready var right_paddle: Paddle = %RightPaddle
 @onready var score_sfx: AudioStreamPlayer = %ScoreSFX
 @onready var background: TextureRect = $BackgroundLayer/Background
+@onready var drop_timer: Timer = $DropTimer
 
 
 # Game starts with a new ball spawning
@@ -27,10 +29,12 @@ func _process(delta: float) -> void:
 	
 	var current_offset: Vector2 = background.get_instance_shader_parameter("offset")
 	
-	var ball_pos_ratio := ball.global_position / get_viewport_rect().size
-	var target_offset := Vector2(0.475, 0.475) + ball_pos_ratio * 0.05
-	var new_offset := current_offset.move_toward(target_offset, delta * 0.1)
-	background.set_instance_shader_parameter("offset", new_offset)
+	if ball:
+		var ball_pos_ratio := ball.global_position / get_viewport_rect().size
+		var target_offset := Vector2(0.475, 0.475) + ball_pos_ratio * 0.05
+		var new_offset := current_offset.move_toward(target_offset, delta * 0.1)
+		background.set_instance_shader_parameter("offset", new_offset)
+	
 	background.set_instance_shader_parameter("progress", drop_progress)
 
 	#right_paddle.input = Input.get_axis("player_2_move_up", "player_2_move_down")
@@ -54,12 +58,32 @@ func spawn_ball() -> void:
 	right_paddle.target = ball
 
 
+func next_level() -> void:
+	level += 1
+	drop_progress = 0.0
+	
+	drop_tween = create_tween()
+	drop_tween.tween_property(self, "drop_progress", 1.0, 2.0).set_trans(Tween.TRANS_ELASTIC)
+
+
 # Restart game by spawning a new ball
 # Note that paddles are *not* reset
 func restart() -> void:
+	if drop_tween:
+		drop_tween.kill()
+	drop_timer.stop()
 	score_sfx.play()
-	spawn_ball()
+	
+	if level:
+		drop_progress += level
+		drop_tween = create_tween()
+		drop_tween.tween_property(self, "drop_progress", 0.0, 2.0).set_trans(Tween.TRANS_CUBIC)
+	
+	await drop_tween.finished
+	
+	drop_timer.start()
 	level = 0
+	spawn_ball()
 
 
 func _ball_out_of_bounds() -> void:
@@ -76,7 +100,4 @@ func _on_right_bounds_body_entered(_body: Node2D) -> void:
 
 
 func _on_drop_timer_timeout() -> void:
-	drop_progress = 0.0
-	
-	var tween := create_tween()
-	tween.tween_property(self, "drop_progress", 1.0, 2.0).set_trans(Tween.TRANS_ELASTIC)
+	next_level()
