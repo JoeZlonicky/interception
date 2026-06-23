@@ -2,14 +2,16 @@ class_name Ball
 extends CharacterBody2D
 
 
-signal paddle_hit(paddle: Paddle)
+signal hit
 
 const HIT_PARTICLE_SCENE := preload("uid://be262xlxf8xgx")
 const MOVE_SPEED: float = 450.0
+const HITS_TO_EXPLODE: int = 15
 
 @onready var hit_sfx: AudioStreamPlayer2D = %HitSFX
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var trail_particles: GPUParticles2D = $TrailParticles
 
 
 func _process(delta: float) -> void:
@@ -35,7 +37,6 @@ func _physics_process(delta: float) -> void:
 func _collide_with(body: Object, normal: Vector2, pos: Vector2) -> void:
 	if body is Paddle:
 		body.flash()
-		paddle_hit.emit(body)
 	
 	var hit_particle := HIT_PARTICLE_SCENE.instantiate() as GPUParticles2D
 	GameUtility.spawn(hit_particle, pos)
@@ -43,9 +44,12 @@ func _collide_with(body: Object, normal: Vector2, pos: Vector2) -> void:
 	hit_particle.emitting = true
 	hit_particle.finished.connect(hit_particle.queue_free)
 	
-	velocity = velocity.bounce(normal)
-	animation_player.play("flash")
+	
 	hit_sfx.play()
+	hit.emit()
+	
+	animation_player.play("flash")
+	velocity = velocity.bounce(normal)
 
 
 # Useful for setting the initial direction of the ball

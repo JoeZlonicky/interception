@@ -72,25 +72,26 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.039215688, 0.023529412, 0.050980393, 1)
 
-[node name="LevelLabel" type="Label" parent="BackgroundLayer" unique_id=1557134609]
+[node name="AnnouncementLabel" type="Label" parent="BackgroundLayer" unique_id=1557134609]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0.54901963)
+custom_minimum_size = Vector2(330, 120)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -67.5
-offset_right = 120.0
-offset_bottom = 67.5
+offset_left = -165.0
+offset_top = -60.0
+offset_right = 165.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_4fuuu")
 theme_override_font_sizes/font_size = 32
-text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="BallSpawnPosition" type="Marker2D" parent="." unique_id=805714642]
 unique_name_in_owner = true
