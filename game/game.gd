@@ -6,6 +6,7 @@ const BALL_SCENE := preload("uid://dpieyslanfybp")
 
 var ball: Ball = null
 var level: int = 0
+var drop_progress: float = 0.0
 
 @onready var announcement_label: Label = %AnnouncementLabel
 @onready var ball_spawn_position: Marker2D = %BallSpawnPosition
@@ -30,6 +31,8 @@ func _process(delta: float) -> void:
 	var target_offset := Vector2(0.475, 0.475) + ball_pos_ratio * 0.05
 	var new_offset := current_offset.move_toward(target_offset, delta * 0.1)
 	background.set_instance_shader_parameter("offset", new_offset)
+	background.set_instance_shader_parameter("progress", drop_progress)
+
 	#right_paddle.input = Input.get_axis("player_2_move_up", "player_2_move_down")
 
 
@@ -70,3 +73,10 @@ func _on_left_bounds_body_entered(_body: Node2D) -> void:
 
 func _on_right_bounds_body_entered(_body: Node2D) -> void:
 	_ball_out_of_bounds.call_deferred()
+
+
+func _on_drop_timer_timeout() -> void:
+	drop_progress = 0.0
+	
+	var tween := create_tween()
+	tween.tween_property(self, "drop_progress", 1.0, 2.0).set_trans(Tween.TRANS_ELASTIC)

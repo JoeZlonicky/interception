@@ -13,6 +13,7 @@ shader_parameter/default_bg = Color(0.12941177, 0.08627451, 0.1882353, 1)
 shader_parameter/inner_bg_1 = Color(0.09803922, 0.0627451, 0.13725491, 1)
 shader_parameter/inner_bg_2 = Color(0.07450981, 0.047058824, 0.101960786, 1)
 shader_parameter/inner_bg_3 = Color(0.039215688, 0.023529412, 0.050980393, 1)
+shader_parameter/inner_bg_4 = Color(0, 0, 0, 1)
 shader_parameter/size = Vector2(480, 270)
 shader_parameter/inner_width = 50.0
 
@@ -36,6 +37,7 @@ layer = -1
 [node name="Background" type="TextureRect" parent="BackgroundLayer" unique_id=1536726557]
 material = SubResource("ShaderMaterial_4fuuu")
 instance_shader_parameters/offset = Vector2(0.5, 0.5)
+instance_shader_parameters/progress = 0.5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -108,5 +110,10 @@ shape = SubResource("RectangleShape2D_h7iqs")
 unique_name_in_owner = true
 stream = ExtResource("3_h7iqs")
 
+[node name="DropTimer" type="Timer" parent="." unique_id=1042621480]
+wait_time = 3.0
+autostart = true
+
 [connection signal="body_entered" from="LeftBounds" to="." method="_on_left_bounds_body_entered"]
 [connection signal="body_entered" from="RightBounds" to="." method="_on_right_bounds_body_entered"]
+[connection signal="timeout" from="DropTimer" to="." method="_on_drop_timer_timeout"]
