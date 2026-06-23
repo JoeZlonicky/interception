@@ -12,6 +12,7 @@ var level: int = 0
 @onready var left_paddle: Paddle = %LeftPaddle
 @onready var right_paddle: Paddle = %RightPaddle
 @onready var score_sfx: AudioStreamPlayer = %ScoreSFX
+@onready var background: TextureRect = $BackgroundLayer/Background
 
 
 # Game starts with a new ball spawning
@@ -20,8 +21,15 @@ func _ready() -> void:
 
 
 # Control the left paddle with input
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	left_paddle.input = Input.get_axis("player_1_move_up", "player_1_move_down")
+	
+	var current_offset: Vector2 = background.get_instance_shader_parameter("offset")
+	
+	var ball_pos_ratio := ball.global_position / get_viewport_rect().size
+	var target_offset := Vector2(0.475, 0.475) + ball_pos_ratio * 0.05
+	var new_offset := current_offset.move_toward(target_offset, delta * 0.1)
+	background.set_instance_shader_parameter("offset", new_offset)
 	#right_paddle.input = Input.get_axis("player_2_move_up", "player_2_move_down")
 
 

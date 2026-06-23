@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://by2m4v1dk3eah" path="res://common/fonts/monomaniac_one/MonomaniacOne-Regular.ttf" id="2_4fuuu"]
 [ext_resource type="Shader" uid="uid://d3o4otiu3d8mc" path="res://common/shaders/background.gdshader" id="2_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://dfq6d3x5qit4i" path="res://components/paddle/paddle.tscn" id="2_vasa2"]
+[ext_resource type="Texture2D" uid="uid://chvsu0af2ufge" path="res://icon.svg" id="3_dakft"]
 [ext_resource type="AudioStream" uid="uid://o44jal8svjmx" path="res://common/sfx/score.wav" id="3_h7iqs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4fuuu"]
@@ -12,10 +13,8 @@ shader_parameter/default_bg = Color(0.12941177, 0.08627451, 0.1882353, 1)
 shader_parameter/inner_bg_1 = Color(0.09803922, 0.0627451, 0.13725491, 1)
 shader_parameter/inner_bg_2 = Color(0.07450981, 0.047058824, 0.101960786, 1)
 shader_parameter/inner_bg_3 = Color(0.039215688, 0.023529412, 0.050980393, 1)
-shader_parameter/size = Vector2(0, 0)
-shader_parameter/inner_width = 25.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dakft"]
+shader_parameter/size = Vector2(480, 270)
+shader_parameter/inner_width = 50.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vasa2"]
 normal = Vector2(0, 1)
@@ -36,12 +35,13 @@ layer = -1
 
 [node name="Background" type="TextureRect" parent="BackgroundLayer" unique_id=1536726557]
 material = SubResource("ShaderMaterial_4fuuu")
+instance_shader_parameters/offset = Vector2(0.5, 0.5)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_dakft")
+texture = ExtResource("3_dakft")
 
 [node name="AnnouncementLabel" type="Label" parent="BackgroundLayer" unique_id=1557134609]
 unique_name_in_owner = true
