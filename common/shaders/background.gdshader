@@ -23,7 +23,7 @@ bool isDistanceFromTextureEdge(vec2 pos, float d, vec2 o) {
 vec4 getColor(vec2 uv) {
 	vec2 pos = size * uv;
 	
-	float p = progress - float(int(progress));
+	float p = progress - float(floor(progress));
 	float bound_1 = mix(inner_width, 0.0, p);
 	float bound_2 = mix(inner_width * 2.0, inner_width, p);
 	float bound_3 = mix(inner_width * 3.0, inner_width * 2.0, p);

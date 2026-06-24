@@ -27,13 +27,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	left_paddle.input = Input.get_axis("player_1_move_up", "player_1_move_down")
 	
-	var current_offset: Vector2 = background.get_instance_shader_parameter("offset")
+	var current_bg_offset: Vector2 = background.get_instance_shader_parameter("offset")
 	
 	if ball:
 		var ball_pos_ratio := ball.global_position / get_viewport_rect().size
-		var target_offset := Vector2(0.475, 0.475) + ball_pos_ratio * 0.05
-		var new_offset := current_offset.move_toward(target_offset, delta * 0.1)
-		background.set_instance_shader_parameter("offset", new_offset)
+		
+		var target_bg_offset := Vector2(0.475, 0.475) + ball_pos_ratio * 0.05
+		var new_bg_offset := current_bg_offset.move_toward(target_bg_offset, delta * 0.1)
+		
+		var target_label_offset := Vector2.ONE * -5.0 + ball_pos_ratio * 10.0
+		var new_label_offset := announcement_label.offset_transform_position.move_toward(target_label_offset, delta * 20.0)
+		announcement_label.offset_transform_position = new_label_offset
+		background.set_instance_shader_parameter("offset", new_bg_offset)
 	
 	background.set_instance_shader_parameter("progress", drop_progress)
 
@@ -60,10 +65,11 @@ func spawn_ball() -> void:
 
 func next_level() -> void:
 	level += 1
+	announcement_label.text = str(level)
 	drop_progress = 0.0
 	
 	drop_tween = create_tween()
-	drop_tween.tween_property(self, "drop_progress", 1.0, 2.0).set_trans(Tween.TRANS_ELASTIC)
+	drop_tween.tween_property(self, "drop_progress", 3.0, 2.0).set_trans(Tween.TRANS_EXPO)
 
 
 # Restart game by spawning a new ball
@@ -79,10 +85,11 @@ func restart() -> void:
 		drop_tween = create_tween()
 		drop_tween.tween_property(self, "drop_progress", 0.0, 2.0).set_trans(Tween.TRANS_CUBIC)
 	
-	await drop_tween.finished
+		await drop_tween.finished
 	
 	drop_timer.start()
 	level = 0
+	announcement_label.text = str(level)
 	spawn_ball()
 
 
