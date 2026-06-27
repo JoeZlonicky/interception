@@ -8,6 +8,8 @@ const HIT_PARTICLE_SCENE := preload("uid://be262xlxf8xgx")
 const MOVE_SPEED: float = 450.0
 const HITS_TO_EXPLODE: int = 15
 
+var direction := Vector2.RIGHT
+
 @onready var hit_sfx: AudioStreamPlayer2D = %HitSFX
 @onready var sprite: Sprite2D = $BallSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -20,10 +22,10 @@ func _process(delta: float) -> void:
 
 # Move using velocity and check for collisions
 func _physics_process(delta: float) -> void:
-	if not velocity:
+	if not direction:
 		return
-	
-	var collision := move_and_collide(velocity * delta)
+
+	var collision := move_and_collide(direction * MOVE_SPEED * delta)
 	if not collision:
 		return
 	
@@ -49,23 +51,23 @@ func _collide_with(body: Object, normal: Vector2, pos: Vector2) -> void:
 	
 	animation_player.play("flash")
 	if body is Paddle:
-		velocity = get_paddle_bounce_velocity(body, normal)
+		direction = get_paddle_bounce_direction(body, normal)
 	else:
-		velocity = velocity.bounce(normal)
+		direction = direction.bounce(normal)
 
 
-func get_paddle_bounce_velocity(paddle: Paddle, normal: Vector2) -> Vector2:
+func get_paddle_bounce_direction(paddle: Paddle, normal: Vector2) -> Vector2:
 	var d := normal.rotated(-PI / 4.0)
 	var diff := global_position.y - paddle.global_position.y
 	var ratio := remap(diff, -paddle.HEIGHT / 2.0, paddle.HEIGHT / 2.0, 0, 1)
 	ratio = clamp(ratio, 0, 1)
-	return d.rotated(ratio * PI / 2.0) * velocity.length()
+	return d.rotated(ratio * PI / 2.0)
 
 
 # Useful for setting the initial direction of the ball
-func set_direction(direction: Vector2) -> void:
-	if not direction:
-		velocity = Vector2.ZERO
+func set_direction(new_direction: Vector2) -> void:
+	if not new_direction:
+		direction = Vector2.ZERO
 		return
 	
-	velocity = direction.normalized() * MOVE_SPEED
+	direction = new_direction.normalized()
