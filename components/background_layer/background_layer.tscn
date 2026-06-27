@@ -16,6 +16,68 @@ shader_parameter/inner_width = 50.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dakft"]
 
+[sub_resource type="Animation" id="Animation_dkkmh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnnouncementLabel:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnnouncementLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q2ykq"]
+resource_name = "announce"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnnouncementLabel:offset_transform_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1), Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnnouncementLabel:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkkmh"]
+_data = {
+&"RESET": SubResource("Animation_dkkmh"),
+&"announce": SubResource("Animation_q2ykq")
+}
+
 [node name="BackgroundLayer" type="CanvasLayer" unique_id=1762240081]
 layer = -1
 script = ExtResource("1_q2ykq")
@@ -34,7 +96,7 @@ expand_mode = 1
 
 [node name="AnnouncementLabel" type="Label" parent="." unique_id=1946825706]
 unique_name_in_owner = true
-self_modulate = Color(0.36282945, 0.36282945, 0.36282945, 0.39607844)
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(330, 120)
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,3 +116,6 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1486699267]
+libraries/ = SubResource("AnimationLibrary_dkkmh")

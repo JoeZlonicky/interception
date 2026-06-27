@@ -21,9 +21,8 @@ func _ready() -> void:
 
 
 # Control the left paddle with input
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	left_paddle.input = Input.get_axis("player_1_move_up", "player_1_move_down")
-
 	#right_paddle.input = Input.get_axis("player_2_move_up", "player_2_move_down")
 
 

@@ -10,6 +10,7 @@ var ball: Ball
 
 @onready var announcement_label: Label = %AnnouncementLabel
 @onready var background: TextureRect = $Background
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _process(delta: float) -> void:
@@ -22,7 +23,7 @@ func _process(delta: float) -> void:
 	var target_label_offset := Vector2.ONE * -5.0 + ball_pos_ratio * 10.0
 	var new_label_offset := announcement_label.offset_transform_position.move_toward(target_label_offset, delta * 20.0)
 	
-	announcement_label.offset_transform_position = new_label_offset
+	#announcement_label.offset_transform_position = new_label_offset
 	background.set_instance_shader_parameter("offset", new_bg_offset)
 	
 	background.set_instance_shader_parameter("progress", drop_progress)
@@ -34,6 +35,8 @@ func next_level(new_level: int) -> void:
 	
 	drop_tween = create_tween()
 	drop_tween.tween_property(self, "drop_progress", 10.0, 4.0).set_trans(Tween.TRANS_EXPO)
+	announce_level(new_level, 2.5)
+	await drop_tween.finished
 
 
 func restart(from_level: int) -> void:
@@ -47,4 +50,12 @@ func restart(from_level: int) -> void:
 	
 		await drop_tween.finished
 	
-	announcement_label.text = str(0)
+	announce_level(0)
+
+
+func announce_level(level: int, delay_s: float = 0.0) -> void:
+	if delay_s:
+		await get_tree().create_timer(delay_s, false).timeout
+	animation_player.stop()
+	announcement_label.text = "Level " + str(level + 1)
+	animation_player.play("announce")
