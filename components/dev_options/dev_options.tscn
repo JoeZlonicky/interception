@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://br6oo1u60hvxe"]
+
+[ext_resource type="Script" uid="uid://b6mif6o4f3u8w" path="res://components/dev_options/dev_options.gd" id="1_ouamn"]
+
+[node name="DevOptions" type="HBoxContainer" unique_id=2041792987]
+script = ExtResource("1_ouamn")

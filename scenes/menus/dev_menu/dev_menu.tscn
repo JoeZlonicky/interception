@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dec5mxhj85sw3"]
+
+[ext_resource type="Script" path="res://content/scenes/menus/dev_menu/dev_menu.gd" id="1_dwtwy"]
+[ext_resource type="PackedScene" uid="uid://br6oo1u60hvxe" path="res://components/dev_options/dev_options.tscn" id="2_dwtwy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68xp4"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="DevMenu" type="CanvasLayer" unique_id=1029187767]
+layer = 100
+script = ExtResource("1_dwtwy")
+
+[node name="Panel" type="Panel" parent="." unique_id=175895283]
+custom_minimum_size = Vector2(0, 22)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_68xp4")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=84520942]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Dropdowns" parent="Panel/MarginContainer" unique_id=2041792987 instance=ExtResource("2_dwtwy")]
+unique_name_in_owner = true
+layout_mode = 2
+font_size = 8
+menu_width = 100

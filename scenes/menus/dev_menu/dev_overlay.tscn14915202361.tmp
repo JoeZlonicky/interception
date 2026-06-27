@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dec5mxhj85sw3"]
+
+[ext_resource type="Script" uid="uid://cw1chl7y0hmlg" path="res://dev/dev_overlay/dev_overlay.gd" id="1_27q8j"]
+[ext_resource type="PackedScene" uid="uid://er66f71v3mir" path="res://dev/dev_overlay/dropdowns/dropdown.tscn" id="2_kyr2u"]
+[ext_resource type="Script" uid="uid://d32lohx2oq802" path="res://dev/dev_overlay/dropdowns/scenes/scenes_dropdown.gd" id="3_dt4v0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68xp4"]
+bg_color = Color(0.180392, 0.133333, 0.184314, 1)
+
+[node name="DevOverlay" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_27q8j")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 91.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_68xp4")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+
+[node name="Dropdowns" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="SceneDropdown" parent="Panel/MarginContainer/Dropdowns" instance=ExtResource("2_kyr2u")]
+layout_mode = 2
+text = "Scene..."
+script = ExtResource("3_dt4v0")

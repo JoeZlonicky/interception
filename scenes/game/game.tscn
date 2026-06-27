@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dmov0n6cflnxj"]
+
+[ext_resource type="Script" uid="uid://b8qgljfi4ut1u" path="res://scenes/game/game.gd" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://bkfh4413q1gg6" path="res://components/background_layer/background_layer.tscn" id="2_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://dfq6d3x5qit4i" path="res://components/paddle/paddle.tscn" id="2_vasa2"]
+[ext_resource type="AudioStream" uid="uid://o44jal8svjmx" path="res://common/sfx/score.wav" id="3_h7iqs"]
+[ext_resource type="PackedScene" uid="uid://cqs024kaj0suc" path="res://components/boundary/boundary.tscn" id="4_87uf6"]
+[ext_resource type="PackedScene" uid="uid://d34o2g1va8dgh" path="res://scenes/menus/pause_menu/pause_menu.tscn" id="6_5i0tg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vasa2"]
+size = Vector2(25, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7iqs"]
+size = Vector2(25, 270)
+
+[node name="Game" type="Node2D" unique_id=156740021]
+script = ExtResource("1_l1rk1")
+
+[node name="BackgroundLayer" parent="." unique_id=1762240081 instance=ExtResource("2_5i0tg")]
+
+[node name="BallSpawnPosition" type="Marker2D" parent="." unique_id=805714642]
+unique_name_in_owner = true
+position = Vector2(240, 135)
+
+[node name="LeftPaddle" parent="." unique_id=1901416476 instance=ExtResource("2_vasa2")]
+unique_name_in_owner = true
+position = Vector2(10, 135)
+
+[node name="RightPaddle" parent="." unique_id=121752202 instance=ExtResource("2_vasa2")]
+unique_name_in_owner = true
+position = Vector2(470, 135)
+rotation = 3.1415927
+
+[node name="TopBoundary" parent="." unique_id=952336730 instance=ExtResource("4_87uf6")]
+position = Vector2(240, 0)
+
+[node name="Boundary" parent="." unique_id=2013050411 instance=ExtResource("4_87uf6")]
+position = Vector2(240, 270)
+rotation = 3.1415927
+
+[node name="LeftBounds" type="Area2D" parent="." unique_id=627459463]
+position = Vector2(-12.5, 0)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBounds" unique_id=1201717533]
+position = Vector2(0, 135)
+shape = SubResource("RectangleShape2D_vasa2")
+
+[node name="RightBounds" type="Area2D" parent="." unique_id=1173702745]
+position = Vector2(492.5, 135)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBounds" unique_id=1739800867]
+shape = SubResource("RectangleShape2D_h7iqs")
+
+[node name="ScoreSFX" type="AudioStreamPlayer" parent="." unique_id=1533403744]
+unique_name_in_owner = true
+stream = ExtResource("3_h7iqs")
+
+[node name="DropTimer" type="Timer" parent="." unique_id=1042621480]
+wait_time = 5.0
+autostart = true
+
+[node name="PauseMenu" parent="." unique_id=1351992821 instance=ExtResource("6_5i0tg")]
+visible = false
+
+[connection signal="body_entered" from="LeftBounds" to="." method="_on_left_bounds_body_entered"]
+[connection signal="body_entered" from="RightBounds" to="." method="_on_right_bounds_body_entered"]
+[connection signal="timeout" from="DropTimer" to="." method="_on_drop_timer_timeout"]

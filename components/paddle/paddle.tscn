@@ -74,7 +74,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("PaddleSprite:scale")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.03, 0.15),
@@ -86,7 +86,7 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("PaddleSprite:instance_shader_parameters/bg_color")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.03, 0.15),
@@ -98,7 +98,7 @@ tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("PaddleSprite:instance_shader_parameters/outline_color")
-tracks/2/interp = 1
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.03, 0.15),
@@ -129,7 +129,9 @@ instance_shader_parameters/bg_color = Color(0.09803922, 0.0627451, 0.13725491, 1
 instance_shader_parameters/outline_color = Color(0.7019608, 0.49019608, 1, 1)
 instance_shader_parameters/outline_width = 4.0
 instance_shader_parameters/size = Vector2(20, 90)
+position = Vector2(-10, 0)
 texture = SubResource("ExternalTexture_wd5ij")
+offset = Vector2(10, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1014643547]
 position = Vector2(10, 0)

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://nt4qwfd4ixc4"]
+
+[ext_resource type="Script" uid="uid://cp4p543gx1stx" path="res://scenes/menus/main_menu/main_menu.gd" id="1_skctr"]
+
+[sub_resource type="FontVariation" id="FontVariation_1acg5"]
+spacing_bottom = -32
+
+[node name="MainMenu" type="CanvasLayer" unique_id=1390944595]
+script = ExtResource("1_skctr")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1873633490]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Menu" type="VBoxContainer" parent="." unique_id=1240375850]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Menu" unique_id=573052558]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_1acg5")
+theme_override_font_sizes/font_size = 200
+text = "Title"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu" unique_id=1625724365]
+layout_mode = 2
+theme_override_constants/separation = 400
+alignment = 1
+
+[node name="MadeInLabel" type="Label" parent="Menu/HBoxContainer" unique_id=411030407]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Made in Godot!"
+horizontal_alignment = 1
+
+[node name="MadeByLabel" type="Label" parent="Menu/HBoxContainer" unique_id=471905876]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "By Joe Zlonicky!"
+horizontal_alignment = 1
+
+[node name="Spacing" type="Control" parent="Menu" unique_id=2020986510]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu" unique_id=1723496408]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Press Space to Start!"
+horizontal_alignment = 1

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://deahsha3celd1"]
+
+[ext_resource type="Script" uid="uid://cktuyopbcrc5x" path="res://components/general/health/health.gd" id="1_anlyr"]
+
+[node name="Health" type="Node" unique_id=138808151]
+script = ExtResource("1_anlyr")
+
+[node name="RegenTimer" type="Timer" parent="." unique_id=1292287678]
+autostart = true
+
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 
 # Bounce on hitting something
 func _collide_with(body: Object, normal: Vector2, pos: Vector2) -> void:
-	if body is Paddle:
+	if body is Paddle or body is Boundary:
 		body.flash()
 	
 	var hit_particle := HIT_PARTICLE_SCENE.instantiate() as GPUParticles2D

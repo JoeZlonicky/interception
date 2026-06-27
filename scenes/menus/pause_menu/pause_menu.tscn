@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://d34o2g1va8dgh"]
+
+[ext_resource type="Script" uid="uid://dgbgyk2453b7g" path="res://scenes/menus/pause_menu/pause_menu.gd" id="1_aubt2"]
+[ext_resource type="PackedScene" uid="uid://bp0bevgpkgj31" path="res://scenes/menus/settings_menu/settings_menu.tscn" id="2_m0udc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cdd3"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1351992821]
+process_mode = 3
+script = ExtResource("1_aubt2")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=535552208]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Options" type="VBoxContainer" parent="." unique_id=361553374]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PausedLabel" type="Label" parent="Options" unique_id=308932573]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "PAUSED_TITLE"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="ContinueButton" type="Button" parent="Options" unique_id=902217071]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
+text = "PAUSED_CONTINUE"
+flat = true
+
+[node name="SettingsButton" type="Button" parent="Options" unique_id=2100075004]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
+text = "PAUSED_SETTINGS"
+flat = true
+
+[node name="QuitButton" type="Button" parent="Options" unique_id=715263760]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
+text = "PAUSED_QUIT"
+flat = true
+
+[node name="ConfirmQuit" type="VBoxContainer" parent="." unique_id=36415557]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ConfirmQuit" unique_id=1448289640]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="ConfirmLabel" type="Label" parent="ConfirmQuit/MarginContainer" unique_id=780391200]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "QUIT_CONFIRM_MESSAGE"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ConfirmButton" type="Button" parent="ConfirmQuit" unique_id=872215838]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
+text = "QUIT_CONFIRM_CONFIRM"
+flat = true
+
+[node name="CancelButton" type="Button" parent="ConfirmQuit" unique_id=309284174]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
+text = "QUIT_CONFIRM_CANCEL"
+flat = true
+
+[node name="SettingsMenu" parent="." unique_id=930100985 instance=ExtResource("2_m0udc")]
+visible = false
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Options/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Options/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Options/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ConfirmQuit/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="ConfirmQuit/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="back_pressed" from="SettingsMenu" to="." method="_on_settings_menu_back_pressed"]

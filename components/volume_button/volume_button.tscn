@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://sgg1jw7ml0pb"]
+
+[ext_resource type="Script" uid="uid://ufwicv484b3b" path="res://components/ui/volume_button/volume_button.gd" id="1_2ytba"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cdd3"]
+
+[node name="VolumeButton" type="Button" unique_id=1257082484]
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
+text = "Label: "
+flat = true
+script = ExtResource("1_2ytba")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bkfh4413q1gg6"]
+
+[ext_resource type="Shader" uid="uid://d3o4otiu3d8mc" path="res://common/shaders/background.gdshader" id="1_721my"]
+[ext_resource type="Script" uid="uid://c75m6vyjl883" path="res://components/background_layer/background_layer.gd" id="1_q2ykq"]
+[ext_resource type="FontFile" uid="uid://by2m4v1dk3eah" path="res://common/fonts/monomaniac_one/MonomaniacOne-Regular.ttf" id="2_q2ykq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4fuuu"]
+shader = ExtResource("1_721my")
+shader_parameter/default_bg = Color(0.12941177, 0.08627451, 0.1882353, 1)
+shader_parameter/inner_bg_1 = Color(0.09803922, 0.0627451, 0.13725491, 1)
+shader_parameter/inner_bg_2 = Color(0.07450981, 0.047058824, 0.101960786, 1)
+shader_parameter/inner_bg_3 = Color(0.039215688, 0.023529412, 0.050980393, 1)
+shader_parameter/inner_bg_4 = Color(0, 0, 0, 1)
+shader_parameter/size = Vector2(480, 270)
+shader_parameter/inner_width = 50.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dakft"]
+
+[node name="BackgroundLayer" type="CanvasLayer" unique_id=1762240081]
+layer = -1
+script = ExtResource("1_q2ykq")
+
+[node name="Background" type="TextureRect" parent="." unique_id=932397680]
+material = SubResource("ShaderMaterial_4fuuu")
+instance_shader_parameters/offset = Vector2(0.5, 0.5)
+instance_shader_parameters/progress = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_dakft")
+expand_mode = 1
+
+[node name="AnnouncementLabel" type="Label" parent="." unique_id=1946825706]
+unique_name_in_owner = true
+self_modulate = Color(0.36282945, 0.36282945, 0.36282945, 0.39607844)
+custom_minimum_size = Vector2(330, 120)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -63.0
+offset_right = 164.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_fonts/font = ExtResource("2_q2ykq")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
