@@ -5,9 +5,9 @@ extends CharacterBody2D
 signal hit
 
 const HIT_PARTICLE_SCENE := preload("uid://be262xlxf8xgx")
-const MOVE_SPEED: float = 450.0
 const HITS_TO_EXPLODE: int = 15
 
+var speed: float = 0.0
 var direction := Vector2.RIGHT
 
 @onready var hit_sfx: AudioStreamPlayer2D = %HitSFX
@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	if not direction:
 		return
 
-	var collision := move_and_collide(direction * MOVE_SPEED * delta)
+	var collision := move_and_collide(direction * speed * delta)
 	if not collision:
 		return
 	
@@ -51,12 +51,12 @@ func _collide_with(body: Object, normal: Vector2, pos: Vector2) -> void:
 	
 	animation_player.play("flash")
 	if body is Paddle:
-		direction = get_paddle_bounce_direction(body, normal)
+		direction = _get_paddle_bounce_direction(body, normal)
 	else:
 		direction = direction.bounce(normal)
 
 
-func get_paddle_bounce_direction(paddle: Paddle, normal: Vector2) -> Vector2:
+func _get_paddle_bounce_direction(paddle: Paddle, normal: Vector2) -> Vector2:
 	var d := normal.rotated(-PI / 4.0)
 	var diff := global_position.y - paddle.global_position.y
 	var ratio := remap(diff, -paddle.HEIGHT / 2.0, paddle.HEIGHT / 2.0, 0, 1)
@@ -71,3 +71,7 @@ func set_direction(new_direction: Vector2) -> void:
 		return
 	
 	direction = new_direction.normalized()
+
+
+func set_speed(new_speed: float) -> void:
+	speed = new_speed

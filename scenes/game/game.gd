@@ -4,6 +4,8 @@ extends Node2D
 
 const BALL_SCENE := preload("uid://dpieyslanfybp")
 
+@export var game_mode: GameModeData
+
 var ball: Ball = null
 var level: int = 0
 
@@ -40,6 +42,7 @@ func spawn_ball() -> void:
 	var starting_angle: float = [1, 3, 5, 7].pick_random() * PI / 4.0
 	var starting_direction := Vector2.from_angle(starting_angle)
 	ball.set_direction(starting_direction)
+	_update_ball_speed()
 	
 	# Update what the AI paddles is following
 	right_paddle.target = ball
@@ -47,6 +50,7 @@ func spawn_ball() -> void:
 
 func next_level() -> void:
 	level += 1
+	_update_ball_speed()
 	background_layer.next_level(level)
 
 
@@ -64,6 +68,12 @@ func restart() -> void:
 	drop_timer.start()
 	level = 0
 	spawn_ball()
+
+
+func _update_ball_speed() -> void:
+	var ball_speed := game_mode.calculate_ball_speed(level)
+	if ball:
+		ball.set_speed(ball_speed)
 
 
 func _ball_out_of_bounds() -> void:
