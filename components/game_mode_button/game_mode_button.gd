@@ -12,8 +12,8 @@ func _ready() -> void:
 	if not game_mode_data:
 		return
 	
-	title_label.text = tr(game_mode_data.title)
-	description_label.text = tr(game_mode_data.description)
+	title_label.text = game_mode_data.title
+	description_label.text = game_mode_data.description
 
 
 func _process(delta: float) -> void:

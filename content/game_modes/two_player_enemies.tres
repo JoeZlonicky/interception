@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_juh7q")
-title = "Two Player Combat"
-description = "Progress levels against enemies with a second player. Ball speed increases each level."
+title = "GM_TWO_P_ENEMIES_TITLE"
+description = "GM_TWO_P_ENEMIES_DESCRIPTION"
 two_player = true
 enemies = true
 ball_speed_increase_per_level = 25.0

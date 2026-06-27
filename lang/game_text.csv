@@ -19,14 +19,14 @@ SETTINGS_LANGUAGE_TOGGLE,,English / 日本語,English / 日本語
 SETTINGS_BACK,,Back,戻る
 ,,,
 GAME_TITLE,,INTERCEPTION,INTERCEPTION
-GAME_BY,,By Joe Zlonicky,TODO
+GAME_BY,,By Joe Zlonicky,ジョー・ゼドー作
 LEVEL_PREFIX,,Level ,レベル
 ,,,
-GM_TWO_P_ENEMIES_TITLE,,Two Player Adventure,TODO
-GM_TWO_P_ENEMIES_DESCRIPTION,,Progress levels against enemies with a second player. Ball speed increases each level.,TODO
-GM_ONE_P_ENEMIES_TITLE,,Single Player Adventure,TODO
-GM_ONE_P_ENEMIES_DESCRIPTION,,Progress levels against enemies with a wall for an ally. Ball speed increases each level.,TODO
-GM_TWO_P_NORMAL_TITLE,,Two Player Peaceful,TODO
-GM_TWO_P_NORMAL_DESCRIPTION,,Progress levels with a second player. Ball speed increases each level.,TODO
-GM_ONE_P_NORMAL_TITLE,,Single Player Peaceful,TODO
-GM_ONE_P_NORMAL_DESCRIPTION,,Progress levels with a wall for an ally. Ball speed increases each level.,TODO
+GM_TWO_P_ENEMIES_TITLE,,Two Player Adventure,2人アドベンチャー
+GM_TWO_P_ENEMIES_DESCRIPTION,,Progress levels against enemies with a second player. Ball speed increases each level.,2人で協力して敵と戦いながらステージを進もう。ステージが進むごとにボールのスピードが上がる。
+GM_ONE_P_ENEMIES_TITLE,,Single Player Adventure,1人アドベンチャー
+GM_ONE_P_ENEMIES_DESCRIPTION,,Progress levels against enemies with a wall for an ally. Ball speed increases each level.,壁を相棒にして敵と戦いながらステージを進もう。ステージが進むごとにボールのスピードが上がる。
+GM_TWO_P_NORMAL_TITLE,,Two Player Peaceful,2人ピースフル
+GM_TWO_P_NORMAL_DESCRIPTION,,Progress levels with a second player. Ball speed increases each level.,2人で協力してステージを進もう。ステージが進むごとにボールのスピードが上がる。
+GM_ONE_P_NORMAL_TITLE,,Single Player Peaceful,1人ピースフル
+GM_ONE_P_NORMAL_DESCRIPTION,,Progress levels with a wall for an ally. Ball speed increases each level.,壁を相棒にしてステージを進もう。ステージが進むごとにボールのスピードが上がる。

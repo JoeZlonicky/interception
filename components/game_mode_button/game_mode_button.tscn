@@ -35,7 +35,7 @@ border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
 [node name="GameModeButton" type="Button" unique_id=1190935512]
-custom_minimum_size = Vector2(90, 120)
+custom_minimum_size = Vector2(110, 140)
 pivot_offset = Vector2(45, 60)
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_bdhmt")
@@ -61,20 +61,20 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=318528124]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(82, 0)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "GM_TWO_P_ENEMIES_TITLE"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2034301735]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(82, 0)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_constants/line_spacing = 0
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 12
 text = "GM_TWO_P_ENEMIES_DESCRIPTION"
 horizontal_alignment = 1
 autowrap_mode = 3
