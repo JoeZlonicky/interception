@@ -57,11 +57,12 @@ func _collide_with(body: Object, normal: Vector2, pos: Vector2) -> void:
 
 
 func _get_paddle_bounce_direction(paddle: Paddle, normal: Vector2) -> Vector2:
-	var d := normal.rotated(-PI / 4.0)
+	var m := 1 if normal.x < 0.0 else -1
+	var d := normal.rotated(m * PI / 4.0)
 	var diff := global_position.y - paddle.global_position.y
 	var ratio := remap(diff, -paddle.HEIGHT / 2.0, paddle.HEIGHT / 2.0, 0, 1)
 	ratio = clamp(ratio, 0, 1)
-	return d.rotated(ratio * PI / 2.0)
+	return d.rotated(ratio * m * -PI / 2.0)
 
 
 # Useful for setting the initial direction of the ball
