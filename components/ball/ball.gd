@@ -9,13 +9,13 @@ const MOVE_SPEED: float = 450.0
 const HITS_TO_EXPLODE: int = 15
 
 @onready var hit_sfx: AudioStreamPlayer2D = %HitSFX
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $BallSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var trail_particles: GPUParticles2D = $TrailParticles
 
 
 func _process(delta: float) -> void:
-	sprite_2d.rotation += delta * 2.0
+	sprite.rotation += delta * 2.0
 
 
 # Move using velocity and check for collisions

@@ -4,7 +4,6 @@
 [ext_resource type="FontFile" uid="uid://by2m4v1dk3eah" path="res://common/fonts/monomaniac_one/MonomaniacOne-Regular.ttf" id="2_4fuuu"]
 [ext_resource type="Shader" uid="uid://d3o4otiu3d8mc" path="res://common/shaders/background.gdshader" id="2_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://dfq6d3x5qit4i" path="res://components/paddle/paddle.tscn" id="2_vasa2"]
-[ext_resource type="Texture2D" uid="uid://chvsu0af2ufge" path="res://icon.svg" id="3_dakft"]
 [ext_resource type="AudioStream" uid="uid://o44jal8svjmx" path="res://common/sfx/score.wav" id="3_h7iqs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4fuuu"]
@@ -16,6 +15,8 @@ shader_parameter/inner_bg_3 = Color(0.039215688, 0.023529412, 0.050980393, 1)
 shader_parameter/inner_bg_4 = Color(0, 0, 0, 1)
 shader_parameter/size = Vector2(480, 270)
 shader_parameter/inner_width = 50.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dakft"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vasa2"]
 normal = Vector2(0, 1)
@@ -43,7 +44,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_dakft")
+texture = SubResource("PlaceholderTexture2D_dakft")
+expand_mode = 1
 
 [node name="AnnouncementLabel" type="Label" parent="BackgroundLayer" unique_id=1557134609]
 unique_name_in_owner = true
@@ -74,11 +76,11 @@ position = Vector2(240, 135)
 
 [node name="LeftPaddle" parent="." unique_id=1901416476 instance=ExtResource("2_vasa2")]
 unique_name_in_owner = true
-position = Vector2(12.5, 135)
+position = Vector2(10, 135)
 
 [node name="RightPaddle" parent="." unique_id=121752202 instance=ExtResource("2_vasa2")]
 unique_name_in_owner = true
-position = Vector2(467.5, 135)
+position = Vector2(470, 135)
 rotation = 3.1415927
 
 [node name="TopBoundary" type="StaticBody2D" parent="." unique_id=1040491169]
@@ -113,7 +115,7 @@ unique_name_in_owner = true
 stream = ExtResource("3_h7iqs")
 
 [node name="DropTimer" type="Timer" parent="." unique_id=1042621480]
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="body_entered" from="LeftBounds" to="." method="_on_left_bounds_body_entered"]

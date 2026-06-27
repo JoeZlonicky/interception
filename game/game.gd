@@ -69,7 +69,7 @@ func next_level() -> void:
 	drop_progress = 0.0
 	
 	drop_tween = create_tween()
-	drop_tween.tween_property(self, "drop_progress", 3.0, 2.0).set_trans(Tween.TRANS_EXPO)
+	drop_tween.tween_property(self, "drop_progress", 10.0, 4.0).set_trans(Tween.TRANS_EXPO)
 
 
 # Restart game by spawning a new ball
@@ -81,7 +81,7 @@ func restart() -> void:
 	score_sfx.play()
 	
 	if level:
-		drop_progress += level
+		drop_progress += level * 3
 		drop_tween = create_tween()
 		drop_tween.tween_property(self, "drop_progress", 0.0, 2.0).set_trans(Tween.TRANS_CUBIC)
 	
