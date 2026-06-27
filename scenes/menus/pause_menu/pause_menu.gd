@@ -52,7 +52,7 @@ func _on_settings_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	options.hide()
 	confirm_quit.show()
-	confirm_button.grab_focus()
+	InputDeviceListener.focus_depending_on_device(confirm_button)
 
 
 func _on_confirm_button_pressed() -> void:
@@ -62,15 +62,15 @@ func _on_confirm_button_pressed() -> void:
 func _on_cancel_button_pressed() -> void:
 	options.show()
 	confirm_quit.hide()
-	quit_button.grab_focus()
+	InputDeviceListener.focus_depending_on_device(quit_button)
 
 
 func _on_visibility_changed() -> void:
 	if visible:
-		continue_button.grab_focus()
+		InputDeviceListener.focus_depending_on_device(continue_button)
 
 
 func _on_settings_menu_back_pressed() -> void:
 	settings_menu.hide()
 	options.show()
-	settings_button.grab_focus()
+	InputDeviceListener.focus_depending_on_device(settings_button)

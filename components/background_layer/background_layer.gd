@@ -8,6 +8,8 @@ var drop_progress: float = 0.0
 var drop_tween: Tween
 var ball: Ball
 
+var announcement_delay_timer: SceneTreeTimer
+
 @onready var announcement_label: Label = %AnnouncementLabel
 @onready var background: TextureRect = $Background
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -38,6 +40,8 @@ func restart(from_level: int) -> void:
 	if drop_tween:
 		drop_tween.kill()
 	
+	announcement_delay_timer = null
+	
 	if from_level:
 		drop_progress += from_level * 3
 		drop_tween = create_tween()
@@ -50,7 +54,12 @@ func restart(from_level: int) -> void:
 
 func announce_level(level: int, delay_s: float = 0.0) -> void:
 	if delay_s:
-		await get_tree().create_timer(delay_s, false).timeout
+		var new_timer := get_tree().create_timer(delay_s, false)
+		announcement_delay_timer = new_timer
+		await announcement_delay_timer.timeout
+		if announcement_delay_timer != new_timer:
+			return
+	
 	animation_player.stop()
 	announcement_label.text = tr("LEVEL_PREFIX") + str(level + 1)
 	animation_player.play("announce")

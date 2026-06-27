@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://dgbgyk2453b7g" path="res://scenes/menus/pause_menu/pause_menu.gd" id="1_aubt2"]
 [ext_resource type="PackedScene" uid="uid://bp0bevgpkgj31" path="res://scenes/menus/settings_menu/settings_menu.tscn" id="2_m0udc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cdd3"]
-
 [node name="PauseMenu" type="CanvasLayer" unique_id=1351992821]
 process_mode = 3
 script = ExtResource("1_aubt2")
@@ -34,31 +32,31 @@ uppercase = true
 
 [node name="ContinueButton" type="Button" parent="Options" unique_id=902217071]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
 text = "PAUSED_CONTINUE"
 flat = true
 
 [node name="SettingsButton" type="Button" parent="Options" unique_id=2100075004]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
 text = "PAUSED_SETTINGS"
 flat = true
 
 [node name="QuitButton" type="Button" parent="Options" unique_id=715263760]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
 text = "PAUSED_QUIT"
 flat = true
 
@@ -86,21 +84,21 @@ autowrap_mode = 3
 
 [node name="ConfirmButton" type="Button" parent="ConfirmQuit" unique_id=872215838]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
 text = "QUIT_CONFIRM_CONFIRM"
 flat = true
 
 [node name="CancelButton" type="Button" parent="ConfirmQuit" unique_id=309284174]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
 text = "QUIT_CONFIRM_CANCEL"
 flat = true
 

@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://ytpctvmb4qvf" path="res://scenes/menus/settings_menu/settings_menu.gd" id="1_myrcm"]
 [ext_resource type="PackedScene" uid="uid://sgg1jw7ml0pb" path="res://components/volume_button/volume_button.tscn" id="2_aogmj"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cdd3"]
-
 [node name="SettingsMenu" type="CanvasLayer" unique_id=930100985]
 layer = 2
 script = ExtResource("1_myrcm")
@@ -27,55 +25,57 @@ uppercase = true
 [node name="MusicButton" parent="Settings" unique_id=1257082484 instance=ExtResource("2_aogmj")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 text = "SETTINGS_MUSIC_SLIDER_LABEL"
 audio_bus = "Music"
 
 [node name="SFXButton" parent="Settings" unique_id=2018907796 instance=ExtResource("2_aogmj")]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "SETTINGS_SFX_SLIDER_LABEL"
 audio_bus = "SFX"
 
 [node name="FullscreenButton" type="Button" parent="Settings" unique_id=1553909255]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
 text = "SETTINGS_TOGGLE_FULLSCREEN"
 flat = true
 
 [node name="GodotLicenseButton" type="Button" parent="Settings" unique_id=2034871796]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
 text = "SETTINGS_GODOT_LICENSE"
 flat = true
 
 [node name="LanguageToggleButton" type="Button" parent="Settings" unique_id=809192245]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
 text = "SETTINGS_LANGUAGE_TOGGLE"
 flat = true
 
 [node name="BackButton" type="Button" parent="Settings" unique_id=1305697733]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cdd3")
 text = "SETTINGS_BACK"
 flat = true
 

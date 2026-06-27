@@ -1,60 +1,70 @@
-[gd_scene format=3 uid="uid://nt4qwfd4ixc4"]
+[gd_scene format=3 uid="uid://ciwgkvwtirkj6"]
 
-[ext_resource type="Script" uid="uid://cp4p543gx1stx" path="res://scenes/menus/main_menu/main_menu.gd" id="1_skctr"]
+[ext_resource type="Script" uid="uid://db5q5n3niplnv" path="res://scenes/menus/main_menu/main_menu.gd" id="1_flk2s"]
+[ext_resource type="PackedScene" uid="uid://bp0bevgpkgj31" path="res://scenes/menus/settings_menu/settings_menu.tscn" id="3_gm7d7"]
 
-[sub_resource type="FontVariation" id="FontVariation_1acg5"]
-spacing_bottom = -32
+[node name="MainMenu" type="CanvasLayer" unique_id=1550461679]
+script = ExtResource("1_flk2s")
 
-[node name="MainMenu" type="CanvasLayer" unique_id=1390944595]
-script = ExtResource("1_skctr")
-
-[node name="Dim" type="ColorRect" parent="." unique_id=1873633490]
+[node name="MenuContainer" type="VBoxContainer" parent="." unique_id=1101919137]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.75)
+theme_override_constants/separation = 0
+alignment = 1
 
-[node name="Menu" type="VBoxContainer" parent="." unique_id=1240375850]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Title" type="Label" parent="MenuContainer" unique_id=391484626]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "GAME_TITLE"
+horizontal_alignment = 1
+
+[node name="ByLabel" type="Label" parent="MenuContainer" unique_id=1209300752]
+layout_mode = 2
+text = "GAME_BY"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="MenuContainer" unique_id=463824179]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="GameModesContainer" type="HBoxContainer" parent="MenuContainer" unique_id=139952151]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Spacer2" type="Control" parent="MenuContainer" unique_id=196314316]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="OptionsContainer" type="HBoxContainer" parent="MenuContainer" unique_id=827333737]
+layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="Menu" unique_id=573052558]
+[node name="SettingsButton" type="Button" parent="MenuContainer/OptionsContainer" unique_id=597555738]
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_1acg5")
-theme_override_font_sizes/font_size = 200
-text = "Title"
-horizontal_alignment = 1
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "PAUSED_SETTINGS"
+flat = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu" unique_id=1625724365]
+[node name="LanguageToggleButton" type="Button" parent="MenuContainer/OptionsContainer" unique_id=52149342]
 layout_mode = 2
-theme_override_constants/separation = 400
-alignment = 1
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "SETTINGS_LANGUAGE_TOGGLE"
+flat = true
 
-[node name="MadeInLabel" type="Label" parent="Menu/HBoxContainer" unique_id=411030407]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Made in Godot!"
-horizontal_alignment = 1
+[node name="SettingsMenu" parent="." unique_id=930100985 instance=ExtResource("3_gm7d7")]
+visible = false
 
-[node name="MadeByLabel" type="Label" parent="Menu/HBoxContainer" unique_id=471905876]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "By Joe Zlonicky!"
-horizontal_alignment = 1
-
-[node name="Spacing" type="Control" parent="Menu" unique_id=2020986510]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Menu" unique_id=1723496408]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Press Space to Start!"
-horizontal_alignment = 1
+[connection signal="pressed" from="MenuContainer/OptionsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MenuContainer/OptionsContainer/LanguageToggleButton" to="." method="_on_language_toggle_button_pressed"]
+[connection signal="back_pressed" from="SettingsMenu" to="." method="_on_settings_menu_back_pressed"]

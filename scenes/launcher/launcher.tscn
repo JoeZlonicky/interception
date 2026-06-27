@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://b7btidc8x10mr"]
 
-[ext_resource type="Script" uid="uid://pvtmqdh5xkrl" path="res://content/scenes/launcher/launcher.gd" id="1_m3vdr"]
-[ext_resource type="PackedScene" uid="uid://ktgpuvfmyy58" path="res://content/scenes/game/game.tscn" id="2_uce67"]
+[ext_resource type="Script" uid="uid://pvtmqdh5xkrl" path="res://scenes/launcher/launcher.gd" id="1_m3vdr"]
+[ext_resource type="PackedScene" uid="uid://dmov0n6cflnxj" path="res://scenes/game/game.tscn" id="2_uce67"]
 
 [node name="Launcher" type="Node" unique_id=1477514112]
 script = ExtResource("1_m3vdr")
 _main_scene = ExtResource("2_uce67")
 _min_window_size = Vector2i(480, 270)
-_debug_mute_audio = true

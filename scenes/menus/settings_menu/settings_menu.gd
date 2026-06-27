@@ -21,7 +21,7 @@ func _on_language_toggle_button_pressed() -> void:
 
 func _on_visibility_changed() -> void:
 	if visible:
-		music_button.grab_focus()
+		InputDeviceListener.focus_depending_on_device(music_button)
 
 
 func _on_back_button_pressed() -> void:

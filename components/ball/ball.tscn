@@ -101,7 +101,7 @@ tracks/2/path = NodePath("BallSprite:instance_shader_parameters/outline_color")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.15),
+"times": PackedFloat32Array(0, 0.030000001, 0.15),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.7019608, 0.49019608, 1, 1), Color(0.8235294, 0.6627451, 1, 1), Color(0.7019608, 0.49019608, 1, 1)]

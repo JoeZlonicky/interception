@@ -4,11 +4,13 @@ extends Node2D
 
 const BALL_SCENE := preload("uid://dpieyslanfybp")
 
+@export var all_game_modes: Array[GameModeData] = []
 @export var game_mode: GameModeData
 
 var ball: Ball = null
 var level: int = 0
 
+@onready var main_menu: MainMenu = $MainMenu
 @onready var background_layer: BackgroundLayer = $BackgroundLayer
 @onready var ball_spawn_position: Marker2D = %BallSpawnPosition
 @onready var left_paddle: Paddle = %LeftPaddle
@@ -19,6 +21,7 @@ var level: int = 0
 
 # Game starts with a new ball spawning
 func _ready() -> void:
+	main_menu.display_game_modes(all_game_modes)
 	spawn_ball()
 
 

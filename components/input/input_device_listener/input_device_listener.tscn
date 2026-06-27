@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bqv8kmi32y5x2"]
+
+[ext_resource type="Script" uid="uid://djjrk05nfkpy8" path="res://components/input/input_device_listener/input_device_listener.gd" id="1_djuiu"]
+
+[node name="InputDeviceListener" type="Node" unique_id=1644428236]
+script = ExtResource("1_djuiu")
