@@ -73,6 +73,10 @@ pause_toggle={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://lang/game_text.en.translation", "res://lang/game_text.ja.translation")
+
 [layer_names]
 
 2d_physics/layer_1="Default"

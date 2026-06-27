@@ -1,0 +1,21 @@
+key,_notes,en,ja
+TEST,Test,This is a test,これはテストです
+,,,
+PAUSED_TITLE,,Paused,一時停止中
+PAUSED_CONTINUE,,Continue,続ける
+PAUSED_SETTINGS,,Settings,設定
+PAUSED_QUIT,,Quit,終了
+,,,
+QUIT_CONFIRM_MESSAGE,,Are you sure you want to quit? All progress will be lost.,本当に終了しますか？これまでの進行状況はすべて失われます。
+QUIT_CONFIRM_CONFIRM,,Confirm,決定
+QUIT_CONFIRM_CANCEL,,Cancel,キャンセル
+,,,
+SETTINGS_TITLE,,Settings,設定
+SETTINGS_MUSIC_SLIDER_LABEL,,Music: ,音楽：
+SETTINGS_SFX_SLIDER_LABEL,,SFX: ,効果音：
+SETTINGS_TOGGLE_FULLSCREEN,,Toggle fullscreen,フルスクリーン切り替え
+SETTINGS_GODOT_LICENSE,,Godot License,Godot ライセンス
+SETTINGS_LANGUAGE_TOGGLE,,English / 日本語,English / 日本語
+SETTINGS_BACK,,Back,戻る
+,,,
+LEVEL_PREFIX,,Level ,レベル

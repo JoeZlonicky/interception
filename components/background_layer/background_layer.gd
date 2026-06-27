@@ -19,13 +19,8 @@ func _process(delta: float) -> void:
 	var current_bg_offset: Vector2 = background.get_instance_shader_parameter("offset")
 	var target_bg_offset := Vector2(0.475, 0.475) + ball_pos_ratio * 0.05
 	var new_bg_offset := current_bg_offset.move_toward(target_bg_offset, delta * 0.1)
-	
-	var target_label_offset := Vector2.ONE * -5.0 + ball_pos_ratio * 10.0
-	var new_label_offset := announcement_label.offset_transform_position.move_toward(target_label_offset, delta * 20.0)
-	
-	#announcement_label.offset_transform_position = new_label_offset
+
 	background.set_instance_shader_parameter("offset", new_bg_offset)
-	
 	background.set_instance_shader_parameter("progress", drop_progress)
 
 
@@ -57,5 +52,5 @@ func announce_level(level: int, delay_s: float = 0.0) -> void:
 	if delay_s:
 		await get_tree().create_timer(delay_s, false).timeout
 	animation_player.stop()
-	announcement_label.text = "Level " + str(level + 1)
+	announcement_label.text = tr("LEVEL_PREFIX") + str(level + 1)
 	animation_player.play("announce")
