@@ -1,7 +1,8 @@
 class_name Paddle
 extends CharacterBody2D
 
-const MOVE_SPEED: float = 400
+const MOVE_SPEED: float = 300
+const HEIGHT: float = 90.0
 
 var input: float = 0.0
 var target: Node2D = null

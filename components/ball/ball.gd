@@ -44,12 +44,22 @@ func _collide_with(body: Object, normal: Vector2, pos: Vector2) -> void:
 	hit_particle.emitting = true
 	hit_particle.finished.connect(hit_particle.queue_free)
 	
-	
 	hit_sfx.play()
 	hit.emit()
 	
 	animation_player.play("flash")
-	velocity = velocity.bounce(normal)
+	if body is Paddle:
+		velocity = get_paddle_bounce_velocity(body, normal)
+	else:
+		velocity = velocity.bounce(normal)
+
+
+func get_paddle_bounce_velocity(paddle: Paddle, normal: Vector2) -> Vector2:
+	var d := normal.rotated(-PI / 4.0)
+	var diff := global_position.y - paddle.global_position.y
+	var ratio := remap(diff, -paddle.HEIGHT / 2.0, paddle.HEIGHT / 2.0, 0, 1)
+	ratio = clamp(ratio, 0, 1)
+	return d.rotated(ratio * PI / 2.0) * velocity.length()
 
 
 # Useful for setting the initial direction of the ball
