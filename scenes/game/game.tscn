@@ -3,18 +3,55 @@
 [ext_resource type="Script" uid="uid://b8qgljfi4ut1u" path="res://scenes/game/game.gd" id="1_l1rk1"]
 [ext_resource type="Script" uid="uid://4hloh7qvq6u5" path="res://content/game_modes/game_mode_data.gd" id="2_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://bkfh4413q1gg6" path="res://components/background_layer/background_layer.tscn" id="2_5i0tg"]
-[ext_resource type="Resource" uid="uid://e3r6modmgfot" path="res://content/game_modes/two_player_enemies.tres" id="2_bdhmt"]
-[ext_resource type="Resource" uid="uid://dpw40xh6hcf3o" path="res://content/game_modes/single_player_enemies.tres" id="3_4j704"]
-[ext_resource type="AudioStream" uid="uid://o44jal8svjmx" path="res://common/sfx/score.wav" id="3_h7iqs"]
+[ext_resource type="Resource" uid="uid://e3r6modmgfot" path="res://content/game_modes/two_players.tres" id="2_bdhmt"]
+[ext_resource type="Resource" uid="uid://dpw40xh6hcf3o" path="res://content/game_modes/single_player.tres" id="3_4j704"]
 [ext_resource type="PackedScene" uid="uid://cqs024kaj0suc" path="res://components/boundary/boundary.tscn" id="4_87uf6"]
 [ext_resource type="PackedScene" uid="uid://d34o2g1va8dgh" path="res://scenes/menus/pause_menu/pause_menu.tscn" id="6_5i0tg"]
+[ext_resource type="AudioStream" uid="uid://bg2f1l24x2l5d" path="res://common/sfx/game_over.wav" id="7_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://ciwgkvwtirkj6" path="res://scenes/menus/main_menu/main_menu.tscn" id="8_87uf6"]
+[ext_resource type="AudioStream" uid="uid://cfo42qase2q0v" path="res://common/music/Track 05 Midnight Investigator.mp3" id="10_vaxfo"]
+[ext_resource type="AudioStream" uid="uid://eu8ip1hjohgb" path="res://common/music/Track 06 Chrome Sunglasses.mp3" id="11_ftsea"]
+[ext_resource type="AudioStream" uid="uid://dmchc1tm7as3e" path="res://common/music/Track 08 Cozy Room Interface (Main Menu Theme).mp3" id="12_otnwt"]
+
+[sub_resource type="Curve" id="Curve_4j704"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7760617, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2a8rs"]
+curve = SubResource("Curve_4j704")
+
+[sub_resource type="Curve" id="Curve_2a8rs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4j704"]
+curve = SubResource("Curve_2a8rs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2a8rs"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 135, 1)
+spread = 5.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_4j704")
+alpha_curve = SubResource("CurveTexture_2a8rs")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vasa2"]
 size = Vector2(25, 270)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7iqs"]
 size = Vector2(25, 270)
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wd5ij"]
+shuffle = true
+stream_count = 3
+stream_0 = ExtResource("10_vaxfo")
+stream_1 = ExtResource("11_ftsea")
+stream_2 = ExtResource("12_otnwt")
 
 [node name="Game" type="Node2D" unique_id=156740021]
 script = ExtResource("1_l1rk1")
@@ -43,6 +80,25 @@ position = Vector2(240, 0)
 position = Vector2(240, 270)
 rotation = 3.1415927
 
+[node name="LeftScoreParticles" type="GPUParticles2D" parent="." unique_id=221595758]
+modulate = Color(0.8235294, 0.6627451, 1, 1)
+position = Vector2(0, 135)
+emitting = false
+amount = 128
+one_shot = true
+explosiveness = 0.25
+process_material = SubResource("ParticleProcessMaterial_2a8rs")
+
+[node name="RightScoreParticles" type="GPUParticles2D" parent="." unique_id=42090161]
+modulate = Color(0.8235294, 0.6627451, 1, 1)
+position = Vector2(480, 135)
+rotation = 3.1415927
+emitting = false
+amount = 128
+one_shot = true
+explosiveness = 0.25
+process_material = SubResource("ParticleProcessMaterial_2a8rs")
+
 [node name="LeftBounds" type="Area2D" parent="." unique_id=627459463]
 position = Vector2(-12.5, 0)
 collision_mask = 4
@@ -58,17 +114,24 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBounds" unique_id=1739800867]
 shape = SubResource("RectangleShape2D_h7iqs")
 
-[node name="ScoreSFX" type="AudioStreamPlayer" parent="." unique_id=1533403744]
+[node name="GameOverSFX" type="AudioStreamPlayer" parent="." unique_id=1533403744]
 unique_name_in_owner = true
-stream = ExtResource("3_h7iqs")
+stream = ExtResource("7_2a8rs")
+bus = &"SFX"
 
 [node name="DropTimer" type="Timer" parent="." unique_id=1042621480]
-wait_time = 5.0
+wait_time = 6.0
 
 [node name="PauseMenu" parent="." unique_id=1351992821 instance=ExtResource("6_5i0tg")]
 visible = false
 
 [node name="MainMenu" parent="." unique_id=1550461679 instance=ExtResource("8_87uf6")]
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1341495704]
+stream = SubResource("AudioStreamPlaylist_wd5ij")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="body_entered" from="LeftBounds" to="." method="_on_left_bounds_body_entered"]
 [connection signal="body_entered" from="RightBounds" to="." method="_on_right_bounds_body_entered"]

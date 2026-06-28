@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://eu8ip1hjohgb"
+path="res://.godot/imported/Track 06 Chrome Sunglasses.mp3-f7db6d94441899a1b6fbe87cdb5aaa49.mp3str"
+
+[deps]
+
+source_file="res://common/music/Track 06 Chrome Sunglasses.mp3"
+dest_files=["res://.godot/imported/Track 06 Chrome Sunglasses.mp3-f7db6d94441899a1b6fbe87cdb5aaa49.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

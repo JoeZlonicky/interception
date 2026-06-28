@@ -55,7 +55,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=912804305]
 layout_mode = 2
@@ -79,3 +79,12 @@ theme_override_font_sizes/font_size = 12
 text = "GM_TWO_P_ENEMIES_DESCRIPTION"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="HighScoreLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=19186976]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "HIGH_SCORE_LABEL"
+horizontal_alignment = 1
+vertical_alignment = 2

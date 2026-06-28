@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmchc1tm7as3e"
+path="res://.godot/imported/Track 08 Cozy Room Interface (Main Menu Theme).mp3-69c2a95d06d1b1ed95ca30ba453514a2.mp3str"
+
+[deps]
+
+source_file="res://common/music/Track 08 Cozy Room Interface (Main Menu Theme).mp3"
+dest_files=["res://.godot/imported/Track 08 Cozy Room Interface (Main Menu Theme).mp3-69c2a95d06d1b1ed95ca30ba453514a2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dof254e40dre5"
+path="res://.godot/imported/Track 10 Childhood Nostalgia (Outro Theme).mp3-c06fe93e3f90451b1e8c18a41b9d5aad.mp3str"
+
+[deps]
+
+source_file="res://common/music/Track 10 Childhood Nostalgia (Outro Theme).mp3"
+dest_files=["res://.godot/imported/Track 10 Childhood Nostalgia (Outro Theme).mp3-c06fe93e3f90451b1e8c18a41b9d5aad.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

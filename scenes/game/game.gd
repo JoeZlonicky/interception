@@ -24,8 +24,10 @@ var level: int = 0
 @onready var left_paddle_spawn_position: Marker2D = $LeftPaddleSpawnPosition
 @onready var right_paddle_spawn_position: Marker2D = $RightPaddleSpawnPosition
 
-@onready var score_sfx: AudioStreamPlayer = %ScoreSFX
+@onready var game_over_sfx: AudioStreamPlayer = %GameOverSFX
 @onready var drop_timer: Timer = $DropTimer
+@onready var left_score_particles: GPUParticles2D = $LeftScoreParticles
+@onready var right_score_particles: GPUParticles2D = $RightScoreParticles
 
 
 func _ready() -> void:
@@ -77,6 +79,7 @@ func spawn_ball() -> void:
 
 func next_level() -> void:
 	level += 1
+	main_menu.update_high_score(game_mode, level)
 	_update_ball_speed()
 	background_layer.next_level(level)
 
@@ -91,7 +94,7 @@ func restart() -> void:
 	
 	background_layer.ball = null
 	drop_timer.stop()
-	score_sfx.play()
+	game_over_sfx.play()
 	
 	await background_layer.restart(level)
 	
@@ -117,10 +120,12 @@ func _ball_out_of_bounds() -> void:
 
 func _on_left_bounds_body_entered(_body: Node2D) -> void:
 	_ball_out_of_bounds.call_deferred()
+	left_score_particles.emitting = true
 
 
 func _on_right_bounds_body_entered(_body: Node2D) -> void:
 	_ball_out_of_bounds.call_deferred()
+	right_score_particles.emitting = true
 
 
 func _on_drop_timer_timeout() -> void:
@@ -137,5 +142,6 @@ func _on_main_menu_game_mode_selected(mode_data: GameModeData) -> void:
 	
 	await get_tree().create_timer(2.0, false).timeout
 	
+	main_menu.update_high_score(game_mode, level)
 	spawn_ball()
 	drop_timer.start()

@@ -139,3 +139,4 @@ libraries/ = SubResource("AnimationLibrary_iqdgg")
 [node name="HitSFX" type="AudioStreamPlayer2D" parent="." unique_id=809379938]
 unique_name_in_owner = true
 stream = ExtResource("3_w6j5n")
+bus = &"SFX"

@@ -6,6 +6,7 @@ signal game_mode_selected(mode_data: GameModeData)
 const GAME_MODE_BUTTON_SCENE := preload("uid://bv14mubvwpcat")
 
 var fade_out_tween: Tween
+var mode_to_button_map: Dictionary[GameModeData, GameModeButton] = {}
 
 @onready var menu_container: VBoxContainer = $MenuContainer
 @onready var settings_menu: SettingsMenu = $SettingsMenu
@@ -14,10 +15,22 @@ var fade_out_tween: Tween
 
 func display_game_modes(modes: Array[GameModeData]) -> void:
 	for mode_data in modes:
+		if mode_to_button_map.has(mode_data):
+			continue
+		
 		var button := GAME_MODE_BUTTON_SCENE.instantiate() as GameModeButton
 		button.game_mode_data = mode_data
 		button.pressed.connect(_on_game_mode_button_selected.bind(mode_data))
+		mode_to_button_map[mode_data] = button
 		game_modes_container.add_child(button)
+
+
+func update_high_score(mode: GameModeData, score: int) -> void:
+	var button := mode_to_button_map.get(mode) as GameModeButton
+	if not button:
+		return
+	
+	button.update_high_score(score)
 
 
 func fade_out() -> void:
@@ -43,6 +56,7 @@ func _on_game_mode_button_selected(mode_data: GameModeData) -> void:
 		return
 	game_mode_selected.emit(mode_data)
 
+
 func _on_language_toggle_button_pressed() -> void:
 	LangUtility.toggle_japanese()
 
@@ -64,3 +78,7 @@ func _set_default_focus() -> void:
 	
 	var first_mode := game_modes_container.get_child(0) as GameModeButton
 	InputDeviceListener.focus_depending_on_device(first_mode)
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

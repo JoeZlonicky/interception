@@ -4,8 +4,11 @@ extends Button
 
 @export var game_mode_data: GameModeData
 
+var high_score: int = -1
+
 @onready var title_label: Label = %TitleLabel
 @onready var description_label: Label = %DescriptionLabel
+@onready var high_score_label: Label = %HighScoreLabel
 
 
 func _ready() -> void:
@@ -14,6 +17,27 @@ func _ready() -> void:
 	
 	title_label.text = game_mode_data.title
 	description_label.text = game_mode_data.description
+	high_score_label.hide()
+
+
+func _notification(what: int) -> void:
+	if what != NOTIFICATION_TRANSLATION_CHANGED:
+		return
+	
+	if not is_node_ready():
+		await ready
+	
+	if high_score >= 0:
+		update_high_score(high_score)
+
+
+func update_high_score(score: int) -> void:
+	if score < high_score:
+		return
+	
+	high_score_label.text = tr("HIGH_SCORE_LABEL") + str(score + 1)
+	high_score_label.show()
+	high_score = score
 
 
 func _process(delta: float) -> void:

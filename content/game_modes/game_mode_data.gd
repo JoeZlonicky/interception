@@ -6,7 +6,6 @@ extends Resource
 @export var description: String
 
 @export var two_player: bool = false
-@export var enemies: bool = false
 @export_range(1.0, 1000.0) var paddle_speed: float = 300.0
 @export_range(1.0, 1000.0) var base_ball_speed: float = 300.0
 @export_range(0.0, 1000.0) var ball_speed_increase_per_level: float = 0.0

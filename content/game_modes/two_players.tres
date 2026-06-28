@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameModeData" format=3 uid="uid://e3r6modmgfot"]
+
+[ext_resource type="Script" uid="uid://4hloh7qvq6u5" path="res://content/game_modes/game_mode_data.gd" id="1_6cjmt"]
+
+[resource]
+script = ExtResource("1_6cjmt")
+title = "GM_TWO_PLAYERS_TITLE"
+description = "GM_TWO_PLAYERS_DESCRIPTION"
+two_player = true
+ball_speed_increase_per_level = 25.0
+metadata/_custom_type_script = "uid://4hloh7qvq6u5"

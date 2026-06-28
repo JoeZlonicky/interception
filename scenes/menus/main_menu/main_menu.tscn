@@ -44,6 +44,15 @@ layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
+[node name="QuitButton" type="Button" parent="MenuContainer/OptionsContainer" unique_id=1379946314]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "PAUSED_QUIT"
+flat = true
+
 [node name="SettingsButton" type="Button" parent="MenuContainer/OptionsContainer" unique_id=597555738]
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -65,6 +74,7 @@ flat = true
 [node name="SettingsMenu" parent="." unique_id=930100985 instance=ExtResource("3_gm7d7")]
 visible = false
 
+[connection signal="pressed" from="MenuContainer/OptionsContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MenuContainer/OptionsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MenuContainer/OptionsContainer/LanguageToggleButton" to="." method="_on_language_toggle_button_pressed"]
 [connection signal="back_pressed" from="SettingsMenu" to="." method="_on_settings_menu_back_pressed"]
