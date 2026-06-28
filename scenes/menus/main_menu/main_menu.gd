@@ -1,7 +1,11 @@
 class_name MainMenu
 extends CanvasLayer
 
+signal game_mode_selected(mode_data: GameModeData)
+
 const GAME_MODE_BUTTON_SCENE := preload("uid://bv14mubvwpcat")
+
+var fade_out_tween: Tween
 
 @onready var menu_container: VBoxContainer = $MenuContainer
 @onready var settings_menu: SettingsMenu = $SettingsMenu
@@ -12,9 +16,27 @@ func display_game_modes(modes: Array[GameModeData]) -> void:
 	for mode_data in modes:
 		var button := GAME_MODE_BUTTON_SCENE.instantiate() as GameModeButton
 		button.game_mode_data = mode_data
+		button.pressed.connect(_on_game_mode_button_selected.bind(mode_data))
 		game_modes_container.add_child(button)
 	_set_default_focus()
 
+
+func fade_out() -> void:
+	fade_out_tween = TweenUtility.fade_out(menu_container)
+	await fade_out_tween.finished
+	hide()
+	fade_out_tween = null
+
+
+func fade_in() -> void:
+	show()
+	await TweenUtility.fade_in(menu_container).finished
+
+
+func _on_game_mode_button_selected(mode_data: GameModeData) -> void:
+	if fade_out_tween:
+		return
+	game_mode_selected.emit(mode_data)
 
 func _on_language_toggle_button_pressed() -> void:
 	LangUtility.toggle_japanese()

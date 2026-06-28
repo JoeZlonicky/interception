@@ -24,12 +24,12 @@ func _process(delta: float) -> void:
 
 func _get_target_scale() -> float:
 	if has_focus(true):
-		return 1.1
+		return 1.05
 	
 	match get_draw_mode():
 		DrawMode.DRAW_HOVER:
-			return 1.1
+			return 1.05
 		DrawMode.DRAW_PRESSED:
-			return 0.9
+			return 0.95
 	
 	return 1.0

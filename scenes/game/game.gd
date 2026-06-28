@@ -2,10 +2,16 @@ class_name Game
 extends Node2D
 
 
+const BOUNDARY_SCENE := preload("uid://cqs024kaj0suc")
+const PADDLE_SCENE := preload("uid://dfq6d3x5qit4i")
 const BALL_SCENE := preload("uid://dpieyslanfybp")
 
 @export var all_game_modes: Array[GameModeData] = []
 @export var game_mode: GameModeData
+
+var left_paddle: Paddle
+var right_paddle: Paddle
+var right_boundary: Boundary
 
 var ball: Ball = null
 var level: int = 0
@@ -13,22 +19,44 @@ var level: int = 0
 @onready var main_menu: MainMenu = $MainMenu
 @onready var background_layer: BackgroundLayer = $BackgroundLayer
 @onready var ball_spawn_position: Marker2D = %BallSpawnPosition
-@onready var left_paddle: Paddle = %LeftPaddle
-@onready var right_paddle: Paddle = %RightPaddle
+
+@onready var right_boundary_spawn_position: Marker2D = $RightBoundarySpawnPosition
+@onready var left_paddle_spawn_position: Marker2D = $LeftPaddleSpawnPosition
+@onready var right_paddle_spawn_position: Marker2D = $RightPaddleSpawnPosition
+
 @onready var score_sfx: AudioStreamPlayer = %ScoreSFX
 @onready var drop_timer: Timer = $DropTimer
 
 
-# Game starts with a new ball spawning
 func _ready() -> void:
+	main_menu.fade_in()
 	main_menu.display_game_modes(all_game_modes)
-	spawn_ball()
+	#spawn_ball()
 
 
-# Control the left paddle with input
 func _process(_delta: float) -> void:
-	left_paddle.input = Input.get_axis("player_1_move_up", "player_1_move_down")
-	#right_paddle.input = Input.get_axis("player_2_move_up", "player_2_move_down")
+	if left_paddle:
+		left_paddle.input = Input.get_axis("player_1_move_up", "player_1_move_down")
+	if right_paddle:
+		right_paddle.input = Input.get_axis("player_2_move_up", "player_2_move_down")
+
+
+func spawn_paddles_and_walls() -> void:
+	left_paddle = PADDLE_SCENE.instantiate() as Paddle
+	left_paddle_spawn_position.add_sibling(left_paddle)
+	left_paddle.global_position = left_paddle_spawn_position.global_position
+	
+	if game_mode.two_player:
+		right_paddle = PADDLE_SCENE.instantiate() as Paddle
+		right_paddle_spawn_position.add_sibling(right_paddle)
+		right_paddle.global_position = right_paddle_spawn_position.global_position
+		right_paddle.rotation_degrees = 180
+	else:
+		right_boundary = BOUNDARY_SCENE.instantiate() as Boundary
+		right_paddle_spawn_position.add_sibling(right_boundary)
+		right_boundary.global_position = right_boundary_spawn_position.global_position
+		right_boundary.rotation_degrees = 90
+		right_boundary.spawn()
 
 
 # Spawn a new ball in a random angled direction
@@ -48,7 +76,8 @@ func spawn_ball() -> void:
 	_update_ball_speed()
 	
 	# Update what the AI paddles is following
-	right_paddle.target = ball
+	if right_paddle:
+		right_paddle.target = ball
 
 
 func next_level() -> void:
@@ -57,20 +86,28 @@ func next_level() -> void:
 	background_layer.next_level(level)
 
 
-# Restart game by spawning a new ball
-# Note that paddles are *not* reset
 func restart() -> void:
 	ball.queue_free()
-	background_layer.ball = null
+	left_paddle.despawn()
+	if right_paddle:
+		right_paddle.despawn()
+	if right_boundary:
+		right_boundary.despawn()
 	
+	background_layer.ball = null
 	drop_timer.stop()
 	score_sfx.play()
 	
 	await background_layer.restart(level)
 	
-	drop_timer.start()
+	background_layer.passive_progress_enabled = true
+	main_menu.fade_in()
+	
+	ball = null
+	left_paddle = null
+	right_paddle = null
+	right_boundary = null
 	level = 0
-	spawn_ball()
 
 
 func _update_ball_speed() -> void:
@@ -83,7 +120,6 @@ func _ball_out_of_bounds() -> void:
 	restart()
 
 
-# Restart the game on either bounds being entered
 func _on_left_bounds_body_entered(_body: Node2D) -> void:
 	_ball_out_of_bounds.call_deferred()
 
@@ -94,3 +130,17 @@ func _on_right_bounds_body_entered(_body: Node2D) -> void:
 
 func _on_drop_timer_timeout() -> void:
 	next_level()
+
+
+func _on_main_menu_game_mode_selected(mode_data: GameModeData) -> void:
+	background_layer.stop_passive_progress()
+	main_menu.fade_out()
+	game_mode = mode_data
+	
+	spawn_paddles_and_walls()
+	background_layer.announce_level(level)
+	
+	await get_tree().create_timer(2.0, false).timeout
+	
+	spawn_ball()
+	drop_timer.start()

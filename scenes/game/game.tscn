@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://4hloh7qvq6u5" path="res://content/game_modes/game_mode_data.gd" id="2_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://bkfh4413q1gg6" path="res://components/background_layer/background_layer.tscn" id="2_5i0tg"]
 [ext_resource type="Resource" uid="uid://e3r6modmgfot" path="res://content/game_modes/two_player_enemies.tres" id="2_bdhmt"]
-[ext_resource type="PackedScene" uid="uid://dfq6d3x5qit4i" path="res://components/paddle/paddle.tscn" id="2_vasa2"]
 [ext_resource type="Resource" uid="uid://dpw40xh6hcf3o" path="res://content/game_modes/single_player_enemies.tres" id="3_4j704"]
 [ext_resource type="AudioStream" uid="uid://o44jal8svjmx" path="res://common/sfx/score.wav" id="3_h7iqs"]
 [ext_resource type="PackedScene" uid="uid://cqs024kaj0suc" path="res://components/boundary/boundary.tscn" id="4_87uf6"]
@@ -28,14 +27,14 @@ game_mode = ExtResource("2_bdhmt")
 unique_name_in_owner = true
 position = Vector2(240, 135)
 
-[node name="LeftPaddle" parent="." unique_id=1901416476 instance=ExtResource("2_vasa2")]
-unique_name_in_owner = true
+[node name="LeftPaddleSpawnPosition" type="Marker2D" parent="." unique_id=494744938]
 position = Vector2(10, 135)
 
-[node name="RightPaddle" parent="." unique_id=121752202 instance=ExtResource("2_vasa2")]
-unique_name_in_owner = true
+[node name="RightPaddleSpawnPosition" type="Marker2D" parent="." unique_id=906260574]
 position = Vector2(470, 135)
-rotation = 3.1415927
+
+[node name="RightBoundarySpawnPosition" type="Marker2D" parent="." unique_id=814264094]
+position = Vector2(480, 135)
 
 [node name="TopBoundary" parent="." unique_id=952336730 instance=ExtResource("4_87uf6")]
 position = Vector2(240, 0)
@@ -65,7 +64,6 @@ stream = ExtResource("3_h7iqs")
 
 [node name="DropTimer" type="Timer" parent="." unique_id=1042621480]
 wait_time = 5.0
-autostart = true
 
 [node name="PauseMenu" parent="." unique_id=1351992821 instance=ExtResource("6_5i0tg")]
 visible = false
@@ -75,3 +73,4 @@ visible = false
 [connection signal="body_entered" from="LeftBounds" to="." method="_on_left_bounds_body_entered"]
 [connection signal="body_entered" from="RightBounds" to="." method="_on_right_bounds_body_entered"]
 [connection signal="timeout" from="DropTimer" to="." method="_on_drop_timer_timeout"]
+[connection signal="game_mode_selected" from="MainMenu" to="." method="_on_main_menu_game_mode_selected"]

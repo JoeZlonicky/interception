@@ -21,7 +21,14 @@ func _physics_process(delta: float) -> void:
 
 
 func flash() -> void:
-	animation_player.play("flash")
+	if not animation_player.is_playing():
+		animation_player.play("flash")
+
+
+func despawn() -> void:
+	animation_player.play("despawn")
+	await animation_player.animation_finished
+	queue_free()
 
 
 # Update velocity based on input

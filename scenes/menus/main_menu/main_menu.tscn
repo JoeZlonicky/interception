@@ -32,7 +32,7 @@ layout_mode = 2
 
 [node name="GameModesContainer" type="HBoxContainer" parent="MenuContainer" unique_id=139952151]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Spacer2" type="Control" parent="MenuContainer" unique_id=196314316]

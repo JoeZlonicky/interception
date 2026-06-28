@@ -21,6 +21,7 @@ SETTINGS_BACK,,Back,戻る
 GAME_TITLE,,INTERCEPTION,INTERCEPTION
 GAME_BY,,By Joe Zlonicky,ジョー・ゼドー作
 LEVEL_PREFIX,,Level ,レベル
+GAME_OVER,,Game Over,ゲームオーバー
 ,,,
 GM_TWO_P_ENEMIES_TITLE,,Two Player Adventure,2人アドベンチャー
 GM_TWO_P_ENEMIES_DESCRIPTION,,Progress levels against enemies with a second player. Ball speed increases each level.,2人で協力して敵と戦いながらステージを進もう。ステージが進むごとにボールのスピードが上がる。
