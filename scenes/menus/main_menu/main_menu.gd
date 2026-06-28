@@ -11,6 +11,12 @@ var mode_to_button_map: Dictionary[GameModeData, GameModeButton] = {}
 @onready var menu_container: VBoxContainer = $MenuContainer
 @onready var settings_menu: SettingsMenu = $SettingsMenu
 @onready var game_modes_container: HBoxContainer = $MenuContainer/GameModesContainer
+@onready var quit_button: Button = %QuitButton
+
+
+func _ready() -> void:
+	if OS.get_name() == "Web":
+		quit_button.hide()
 
 
 func display_game_modes(modes: Array[GameModeData]) -> void:

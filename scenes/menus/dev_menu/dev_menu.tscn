@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dec5mxhj85sw3"]
 
-[ext_resource type="Script" path="res://content/scenes/menus/dev_menu/dev_menu.gd" id="1_dwtwy"]
+[ext_resource type="Script" uid="uid://cw1chl7y0hmlg" path="res://scenes/menus/dev_menu/dev_menu.gd" id="1_dwtwy"]
 [ext_resource type="PackedScene" uid="uid://br6oo1u60hvxe" path="res://components/dev_options/dev_options.tscn" id="2_dwtwy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68xp4"]

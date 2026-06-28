@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dgymbcqy3054k"]
+
+[sub_resource type="Curve" id="Curve_w6j5n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iqdgg"]
+curve = SubResource("Curve_w6j5n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wd5ij"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_iqdgg")
+
+[node name="BallTrailParticles" type="GPUParticles2D" unique_id=1523482767]
+modulate = Color(0.8235294, 0.6627451, 1, 1)
+process_material = SubResource("ParticleProcessMaterial_wd5ij")

@@ -1,22 +1,9 @@
 [gd_scene format=3 uid="uid://dpieyslanfybp"]
 
 [ext_resource type="Script" uid="uid://nch5x7ujtj5f" path="res://components/ball/ball.gd" id="1_usys6"]
+[ext_resource type="PackedScene" uid="uid://dgymbcqy3054k" path="res://components/particles/ball_trail_particles/ball_trail_particles.tscn" id="2_iqdgg"]
 [ext_resource type="Shader" uid="uid://b5vm0w0k00phl" path="res://common/shaders/rect.gdshader" id="2_w6j5n"]
 [ext_resource type="AudioStream" uid="uid://c0ffv1l8nwtck" path="res://common/sfx/hit.wav" id="3_w6j5n"]
-
-[sub_resource type="Curve" id="Curve_w6j5n"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_iqdgg"]
-curve = SubResource("Curve_w6j5n")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wd5ij"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-scale_min = 10.0
-scale_max = 10.0
-scale_curve = SubResource("CurveTexture_iqdgg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usys6"]
 size = Vector2(14, 14)
@@ -118,9 +105,7 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_usys6")
 
-[node name="TrailParticles" type="GPUParticles2D" parent="." unique_id=416094696]
-modulate = Color(0.8235294, 0.6627451, 1, 1)
-process_material = SubResource("ParticleProcessMaterial_wd5ij")
+[node name="BallTrailParticles" parent="." unique_id=1523482767 instance=ExtResource("2_iqdgg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1856682158]
 shape = SubResource("RectangleShape2D_usys6")

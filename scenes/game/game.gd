@@ -36,10 +36,14 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	var p1_axis := Input.get_axis("player_1_move_up", "player_1_move_down")
+	var p2_axis := Input.get_axis("player_2_move_up", "player_2_move_down")
+	if not p1_axis and p2_axis and not right_paddle:
+		p1_axis = p2_axis
 	if left_paddle:
-		left_paddle.input = Input.get_axis("player_1_move_up", "player_1_move_down")
+		left_paddle.input = p1_axis
 	if right_paddle:
-		right_paddle.input = Input.get_axis("player_2_move_up", "player_2_move_down")
+		right_paddle.input = p2_axis
 
 
 func spawn_paddles_and_walls() -> void:

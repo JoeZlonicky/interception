@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="630"
+   height="500"
+   viewBox="0 0 630 500"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="splash.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#2b2b2b"
+     inkscape:document-units="px"
+     inkscape:zoom="0.39794923"
+     inkscape:cx="-42.719017"
+     inkscape:cy="209.82576"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#d4d4d4;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#d4d4d4;stop-opacity:0;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="34.800824"
+       y1="73.180058"
+       x2="591.28251"
+       y2="73.180058"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#191023;fill-opacity:1;stroke:#d2a9ff;stroke-width:7.99998;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:9.8;stroke-opacity:1"
+       id="rect1"
+       width="622.2348"
+       height="492.28784"
+       x="3.9999995"
+       y="4.0000005" />
+    <rect
+       style="fill:#9864e1;fill-opacity:1;stroke:#d2a9ff;stroke-width:16;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:9.8;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2"
+       width="114.63693"
+       height="114.63693"
+       x="472.88342"
+       y="-172.96339"
+       transform="rotate(45)" />
+    <text
+       xml:space="preserve"
+       style="font-size:106.667px;font-family:'Segoe Print';-inkscape-font-specification:'Segoe Print';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#d2a9ff;stroke:none;stroke-width:4;stroke-linecap:round;stroke-miterlimit:9.8;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1"
+       x="32.667484"
+       y="110.56684"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="32.667484"
+         y="110.56684"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:106.667px;font-family:'WDXL Lubrifont JP N';-inkscape-font-specification:'WDXL Lubrifont JP N';stroke:none;stroke-opacity:1;stroke-width:4;stroke-dasharray:none;fill:#d2a9ff;fill-opacity:1">INTERCEPTION</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#d2a9ff;stroke-width:16;stroke-linecap:round;stroke-miterlimit:9.8;stroke-dasharray:none;stroke-opacity:1"
+       d="M 36.436812,454.83189 310.3411,147.00368 412.11287,245.00613"
+       id="path2"
+       sodipodi:nodetypes="ccc" />
+  </g>
+</svg>

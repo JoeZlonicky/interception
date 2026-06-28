@@ -2,8 +2,43 @@
 
 [ext_resource type="Script" uid="uid://pvtmqdh5xkrl" path="res://scenes/launcher/launcher.gd" id="1_m3vdr"]
 [ext_resource type="PackedScene" uid="uid://dmov0n6cflnxj" path="res://scenes/game/game.tscn" id="2_uce67"]
+[ext_resource type="PackedScene" uid="uid://dgymbcqy3054k" path="res://components/particles/ball_trail_particles/ball_trail_particles.tscn" id="3_tn2hw"]
+[ext_resource type="PackedScene" uid="uid://bliyq71jfvxyt" path="res://components/particles/score_particles/score_particles.tscn" id="4_a3xhd"]
+[ext_resource type="PackedScene" uid="uid://k8sq52yhisop" path="res://components/particles/paddle_trail_particles/paddle_trail_particles.tscn" id="5_a3xhd"]
+[ext_resource type="PackedScene" uid="uid://be262xlxf8xgx" path="res://components/particles/hit_particle/hit_particle.tscn" id="6_kllwp"]
 
-[node name="Launcher" type="Node" unique_id=1477514112]
+[node name="Launcher" type="Node2D" unique_id=1701662698 node_paths=PackedStringArray("_particles_to_load")]
 script = ExtResource("1_m3vdr")
 _main_scene = ExtResource("2_uce67")
 _min_window_size = Vector2i(480, 270)
+_particles_to_load = [NodePath("BallTrailParticles"), NodePath("ScoreParticles"), NodePath("PaddleTrailParticles"), NodePath("HitParticles")]
+
+[node name="BallTrailParticles" parent="." unique_id=1523482767 instance=ExtResource("3_tn2hw")]
+emitting = false
+
+[node name="ScoreParticles" parent="." unique_id=864986444 instance=ExtResource("4_a3xhd")]
+
+[node name="PaddleTrailParticles" parent="." unique_id=1642923001 instance=ExtResource("5_a3xhd")]
+
+[node name="HitParticles" parent="." unique_id=352992112 instance=ExtResource("6_kllwp")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2138388328]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1386489590]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.99607843)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect" unique_id=927950509]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "..."
+horizontal_alignment = 1
+vertical_alignment = 1

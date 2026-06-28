@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bliyq71jfvxyt"]
+
+[sub_resource type="Curve" id="Curve_4j704"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7760617, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2a8rs"]
+curve = SubResource("Curve_4j704")
+
+[sub_resource type="Curve" id="Curve_2a8rs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4j704"]
+curve = SubResource("Curve_2a8rs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2a8rs"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 135, 1)
+spread = 5.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_4j704")
+alpha_curve = SubResource("CurveTexture_2a8rs")
+
+[node name="ScoreParticles" type="GPUParticles2D" unique_id=864986444]
+modulate = Color(0.8235294, 0.6627451, 1, 1)
+emitting = false
+amount = 128
+one_shot = true
+explosiveness = 0.25
+process_material = SubResource("ParticleProcessMaterial_2a8rs")

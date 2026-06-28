@@ -14,6 +14,11 @@ extends CanvasLayer
 @onready var settings_menu: SettingsMenu = $SettingsMenu
 
 
+func _ready() -> void:
+	if OS.get_name() == "Web":
+		quit_button.hide()
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	var game := GameUtility.get_game()
 	if game and not game.ball:

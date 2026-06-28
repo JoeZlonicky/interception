@@ -2,20 +2,7 @@
 
 [ext_resource type="Script" uid="uid://64eirvsc1toh" path="res://components/paddle/paddle.gd" id="1_waih8"]
 [ext_resource type="Shader" uid="uid://b5vm0w0k00phl" path="res://common/shaders/rect.gdshader" id="2_1hevo"]
-
-[sub_resource type="Curve" id="Curve_1hevo"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_iqdgg"]
-curve = SubResource("Curve_1hevo")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kwoxf"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-scale_min = 15.0
-scale_max = 15.0
-scale_curve = SubResource("CurveTexture_iqdgg")
+[ext_resource type="PackedScene" uid="uid://k8sq52yhisop" path="res://components/particles/paddle_trail_particles/paddle_trail_particles.tscn" id="2_kwoxf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kwoxf"]
 shader = ExtResource("2_1hevo")
@@ -68,7 +55,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("GPUParticles2D:emitting")
+tracks/3/path = NodePath("PaddleTrailParticles:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -80,7 +67,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GPUParticles2D:self_modulate")
+tracks/4/path = NodePath("PaddleTrailParticles:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -108,7 +95,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/path = NodePath("PaddleTrailParticles:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -120,7 +107,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("GPUParticles2D:self_modulate")
+tracks/2/path = NodePath("PaddleTrailParticles:self_modulate")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -189,7 +176,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/path = NodePath("PaddleTrailParticles:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -211,12 +198,7 @@ _data = {
 collision_layer = 2
 script = ExtResource("1_waih8")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1075044370]
-modulate = Color(0.8235294, 0.6627451, 1, 1)
-emitting = false
-amount = 32
-lifetime = 0.76
-process_material = SubResource("ParticleProcessMaterial_kwoxf")
+[node name="PaddleTrailParticles" parent="." unique_id=1642923001 instance=ExtResource("2_kwoxf")]
 
 [node name="PaddleSprite" type="Sprite2D" parent="." unique_id=386088371]
 material = SubResource("ShaderMaterial_kwoxf")

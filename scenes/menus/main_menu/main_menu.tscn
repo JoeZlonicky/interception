@@ -45,6 +45,7 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="QuitButton" type="Button" parent="MenuContainer/OptionsContainer" unique_id=1379946314]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)

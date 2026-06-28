@@ -13,7 +13,7 @@ var direction := Vector2.RIGHT
 @onready var hit_sfx: AudioStreamPlayer2D = %HitSFX
 @onready var sprite: Sprite2D = $BallSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var trail_particles: GPUParticles2D = $TrailParticles
+@onready var trail_particles: GPUParticles2D = $BallTrailParticles
 
 
 func _process(delta: float) -> void:

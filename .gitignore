@@ -1,3 +1,5 @@
+.executables/
+
 # Godot 4+ specific ignores
 .godot/
 /android/
