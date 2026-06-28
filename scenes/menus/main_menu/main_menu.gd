@@ -18,7 +18,6 @@ func display_game_modes(modes: Array[GameModeData]) -> void:
 		button.game_mode_data = mode_data
 		button.pressed.connect(_on_game_mode_button_selected.bind(mode_data))
 		game_modes_container.add_child(button)
-	_set_default_focus()
 
 
 func fade_out() -> void:
@@ -30,7 +29,13 @@ func fade_out() -> void:
 
 func fade_in() -> void:
 	show()
-	await TweenUtility.fade_in(menu_container).finished
+	menu_container.modulate.a = 0.0
+	
+	var fade_tween := TweenUtility.fade_in(menu_container)
+	
+	await get_tree().process_frame
+	_set_default_focus()
+	await fade_tween.finished
 
 
 func _on_game_mode_button_selected(mode_data: GameModeData) -> void:

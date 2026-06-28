@@ -31,7 +31,6 @@ var level: int = 0
 func _ready() -> void:
 	main_menu.fade_in()
 	main_menu.display_game_modes(all_game_modes)
-	#spawn_ball()
 
 
 func _process(_delta: float) -> void:
@@ -74,10 +73,6 @@ func spawn_ball() -> void:
 	var starting_direction := Vector2.from_angle(starting_angle)
 	ball.set_direction(starting_direction)
 	_update_ball_speed()
-	
-	# Update what the AI paddles is following
-	if right_paddle:
-		right_paddle.target = ball
 
 
 func next_level() -> void:

@@ -15,6 +15,10 @@ extends CanvasLayer
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	var game := GameUtility.get_game()
+	if game and not game.ball:
+		return
+	
 	if event.is_action_pressed("pause_toggle"):
 		if visible:
 			_close()
